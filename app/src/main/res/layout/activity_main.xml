@@ -13,6 +13,43 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
-        android:background="@android:color/transparent"/>
+        android:background="@android:color/transparent"
+        android:layout_alignBottom="@+id/play_button"
+        android:layout_alignLeft="@+id/setting_button"
+        android:layout_alignStart="@+id/setting_button" />
+
+    <Button
+        android:id="@+id/play_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:background="@android:color/transparent"
+        android:layout_marginBottom="34dp"
+        android:layout_above="@+id/leaderboards_button"
+        android:layout_alignRight="@+id/leaderboards_button"
+        android:layout_alignEnd="@+id/leaderboards_button" />
+
+    <Button
+        android:id="@+id/setting_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:background="@android:color/transparent"
+        android:layout_alignTop="@+id/leaderboards_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="59dp" />
+
+    <Button
+        android:id="@+id/leaderboards_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="24dp"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="40dp"
+        android:layout_marginBottom="46dp" />
 
 </RelativeLayout>
