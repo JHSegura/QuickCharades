@@ -29,3 +29,10 @@ Extra:
 
 ### Notes on setting up
 After costumizing your AVD, always Clean your project before running the app and avd, else lots of bugs.
+
+# TODO
+
+* Implement each child activity (Or use Fragments, more complicated)
+* Implement landscape mode
+*
+*
