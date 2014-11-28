@@ -1,6 +1,7 @@
 package com.awesomekids.android.quickcharades;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import android.widget.Button;
 
 
 public class MainActivity extends Activity {
+
 
     private Button mPlayButton, mSettingButton, mFriendsButton, mLeaderBoardsButton;
 
@@ -29,9 +31,20 @@ public class MainActivity extends Activity {
     }
 
     public void onPlayButtonClick(View view) {
+        Intent getGameIntent = new Intent(this,
+                GameActivity.class);
+        final int result = 1;
+        startActivityForResult(getGameIntent, result); //GeoQuiz use 0 as default
     }
 
     public void onSettingButtonClick(View view) {
+        Intent getSettingsIntent = new Intent(this,
+                SettingsActivity.class);
+        final int result = 1; //result id
+
+        startActivity(getSettingsIntent);
+        // Later on will have settings activity pass back some information, but for now, none.
+//        startActivityForResult(getNameScreenIntent, result); // expect to send data back
     }
 
     public void onLeaderboardsButtonClick(View view) {
