@@ -30,4 +30,11 @@ public class GameActivity extends Activity {
         finish();
     }
 
+    public void onGameOptionButtonClick(View view) {
+        Intent getSettingsIntent = new Intent(this,
+                SettingsActivity.class);
+        final int result = 1; //result id
+
+        startActivity(getSettingsIntent);
+    }
 }

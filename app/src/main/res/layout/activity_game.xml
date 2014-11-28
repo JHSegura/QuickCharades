@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -6,4 +6,22 @@
                 >
 
 
-</LinearLayout>
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/close_button"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:onClick="onGameQuitButtonClick"
+        android:background="@android:color/transparent"
+        />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/game_option_button"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:onClick="onGameOptionButtonClick"
+        android:layout_x="317dp"
+        android:layout_y="10dp"
+        android:background="@android:color/transparent"/>
+</AbsoluteLayout>
