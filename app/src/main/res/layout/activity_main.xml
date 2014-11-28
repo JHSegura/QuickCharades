@@ -10,16 +10,19 @@
 
     <Button
         android:id="@+id/friends_button"
+        android:onClick="onFriendsButtonClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:background="@android:color/transparent"
         android:layout_alignBottom="@+id/play_button"
         android:layout_alignLeft="@+id/setting_button"
-        android:layout_alignStart="@+id/setting_button" />
+        android:layout_alignStart="@+id/setting_button"
+        android:layout_alignTop="@+id/play_button"/>
 
     <Button
         android:id="@+id/play_button"
+        android:onClick="onPlayButtonClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="30dp"
@@ -31,17 +34,20 @@
 
     <Button
         android:id="@+id/setting_button"
+        android:onClick="onSettingButtonClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
         android:background="@android:color/transparent"
-        android:layout_alignTop="@+id/leaderboards_button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginLeft="59dp" />
+        android:layout_below="@+id/play_button"
+        android:layout_toLeftOf="@+id/leaderboards_button"
+        android:layout_toStartOf="@+id/leaderboards_button"
+        android:layout_marginRight="63dp"
+        android:layout_marginEnd="63dp"/>
 
     <Button
         android:id="@+id/leaderboards_button"
+        android:onClick="onLeaderboardsButtonClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
