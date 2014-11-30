@@ -3,14 +3,14 @@ package com.awesomekids.android.quickcharades;
 /**
  * Created by Joseph Park on 11/29/2014.
  */
-public enum Status {
+public enum Difficulty {
     VOID(-1),
-    OFFLINE(0),
-    ONLINE(1),
-    BUSY(2), //or AWAY
-    INGAME(3),
-    LOOKING(4); //Looking for game
+    EASY(0),
+    MEDIUM(1),
+    HARD(2);
+
     private int value;
-    private Status(int value){this.value = value;}
+    private Difficulty(int value){this.value = value;}
     public int getValue(){return this.value;}
 }
+

@@ -1,7 +1,7 @@
 package com.awesomekids.android.quickcharades;
 
 /**
- * Created by BrosephPKC on 11/29/2014.
+ * Created by Joseph Park on 11/29/2014.
  */
 public class Streak {
     int streak;

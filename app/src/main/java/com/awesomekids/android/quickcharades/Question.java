@@ -9,16 +9,16 @@ import java.util.Random;
 public class Question {
     private Image image;
     private ArrayList<Letter> letterList;
-    private Diff difficulty;
+    private Difficulty difficulty;
     private static int RAND_CONSTANT = 15;
     private static int MAX_LETTER = 10;
 
     public Question(){
         image = new Image();
         letterList = new ArrayList<Letter>();
-        difficulty = Diff.VOID;
+        difficulty = Difficulty.VOID;
     }
-    public Question(Image image, Diff difficulty){
+    public Question(Image image, Difficulty difficulty){
         this.image = new Image(image.getName(),image.getCategory());
         letterList = new ArrayList<Letter>();
         this.difficulty = difficulty;
@@ -46,14 +46,14 @@ public class Question {
     public ArrayList<Letter> getList(){
         return letterList; //Same with this one ^
     }
-    public Diff getDifficulty(){
+    public Difficulty getDifficulty(){
         return difficulty;
     }
     public void setImage(Image image){
         this.image.setName(image.getName());
         this.image.setCategory(image.getCategory());
     }
-    public void setDifficulty(Diff difficulty){
+    public void setDifficulty(Difficulty difficulty){
         this.difficulty = difficulty;
     }
     public void rerollLetters(){

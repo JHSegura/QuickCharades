@@ -6,12 +6,12 @@ package com.awesomekids.android.quickcharades;
 public class Image {
     //Image URL?
     private String imageName;
-    private Category category;
+    private QCategory category;
     public Image(){
         imageName = "";
-        category = Category.VOID;
+        category = QCategory.VOID;
     }
-    public Image(String name, Category category){
+    public Image(String name, QCategory category){
         imageName = name;
         this.category = category;
     }
@@ -21,10 +21,10 @@ public class Image {
     public void setName(String name){
         imageName = name;
     }
-    public Category getCategory(){
+    public QCategory getCategory(){
         return category;
     }
-    public void setCategory(Category category){
+    public void setCategory(QCategory category){
         this.category = category;
     }
     //Show Image Method
