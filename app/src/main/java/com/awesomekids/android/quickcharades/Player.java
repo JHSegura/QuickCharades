@@ -37,6 +37,16 @@ public class Player {
         this.friendsList = new ArrayList<Player>(friendsList);
         this.rank = rank;
     }
+    public Player(Player player){
+        playerID = player.getPlayerID();
+        playerName = player.getName();
+        playerStats = new Stat(player.getStats());
+        this.currentScore = player.getCurrentScore();
+        currentStreak = new Streak(player.getCurrentStreak().getStreak());
+        this.status = player.getStatus();
+        this.friendsList = new ArrayList<Player>(player.getFriendsList());
+        this.rank = player.getRank();
+    }
     public int getPlayerID(){return playerID;}
     public String getName(){return playerName;}
     public Stat getStats(){return playerStats;}//or return a copy?

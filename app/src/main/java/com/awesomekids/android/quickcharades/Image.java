@@ -28,5 +28,6 @@ public class Image {
         this.category = category;
     }
     //Show Image Method
+    //Image URLs HERE
 }
 

@@ -26,6 +26,7 @@ public class Question {
     }
     private void randomizeLetters(String imageName, int numOfLetters){
         Random Rand = new Random();
+        letterList.clear();
         for(int i = 0; i < imageName.length(); i++)
             letterList.add(i,new Letter(imageName.charAt(i)));
         for(int i = imageName.length(); i < numOfLetters; i++)
