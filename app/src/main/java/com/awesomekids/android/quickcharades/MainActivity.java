@@ -28,6 +28,9 @@ public class MainActivity extends Activity {
     }
 
     public void onFriendsButtonClick(View view) {
+        Intent getFriendsListIntent = new Intent(this,FriendsActivity.class);
+        final int result = 1; //what is this for
+        startActivity(getFriendsListIntent);
     }
 
     public void onPlayButtonClick(View view) {
@@ -48,5 +51,8 @@ public class MainActivity extends Activity {
     }
 
     public void onLeaderboardsButtonClick(View view) {
+//        Intent getLeaderboardIntent = new Intent(this,LeaderboardActivity.class);
+//        final int result = 1;
+//        startActivity(getLeaderboardIntent);
     }
 }

@@ -1,25 +1,40 @@
 package com.awesomekids.android.quickcharades;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
-
+//Ignore for now
 public class FriendsActivity extends Activity {
     private Button fAddFriendButton;
+    private EditText fAddFriendTextField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
         fAddFriendButton = (Button) findViewById(R.id.add_friend_button);
+        fAddFriendTextField = (EditText) findViewById(R.id.add_friend_text_field);
         //Find a way to store friends
     }
 
+    public void onAddFriendButtonClick(View view){
+        //Get name from text field
+        String friendName = fAddFriendTextField.getText().toString();
+        //Access calling player's friends list  and addfriend()
 
+    }
+    public void onFriendsQuitButtonClick(View view) {
+        Intent goingBack = new Intent();
+        setResult(RESULT_OK,goingBack);
+        finish();
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -42,4 +57,5 @@ public class FriendsActivity extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

@@ -22,9 +22,20 @@
         android:text="Add Friend"
         android:id="@+id/add_friend_button"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignRight="@+id/listView"
         android:layout_alignEnd="@+id/listView" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:text="Player Name"
+        android:ems="10"
+        android:id="@+id/add_friend_text_field"
+        android:layout_alignBottom="@+id/add_friend_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/add_friend_button"
+        android:layout_toStartOf="@+id/add_friend_button" />
 
 </RelativeLayout>

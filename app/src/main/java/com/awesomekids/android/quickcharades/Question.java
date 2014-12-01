@@ -25,7 +25,7 @@ public class Question {
         randomizeLetters(image.getName(),MAX_LETTER);
     }
     private void randomizeLetters(String imageName, int numOfLetters){
-        Random Rand = new Random();
+        Random Rand = new Random(); //Test randomize, as well as find a better way to randomize
         letterList.clear();
         for(int i = 0; i < imageName.length(); i++)
             letterList.add(i,new Letter(imageName.charAt(i)));

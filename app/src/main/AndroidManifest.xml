@@ -6,6 +6,14 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="21" />
 
+    <!--<android:uses-permission-->
+        <!--android:name="android.permission.WRITE_EXTERNAL_STORAGE"-->
+        <!--android:maxSdkVersion="18" />-->
+    <!--<android:uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <!--<android:uses-permission-->
+        <!--android:name="android.permission.READ_EXTERNAL_STORAGE"-->
+        <!--android:maxSdkVersion="18" />-->
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -13,20 +21,42 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name="com.awesomekids.android.quickcharades.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GameActivity"
-                  android:label="Quick Match"
-                  android:theme="@style/AppTheme" />
-        <activity android:name=".SettingsActivity"
-                  android:label="Settings"
-                  android:theme="@style/AppTheme"/>
+        <activity
+            android:name="com.awesomekids.android.quickcharades.GameActivity"
+            android:label="Quick Match"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.awesomekids.android.quickcharades.SettingsActivity"
+            android:label="Settings"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="com.awesomekids.android.quickcharades.FriendsActivity"
+            android:label="@string/title_activity_friends" >
+        </activity>
+        <activity
+            android:name="com.awesomekids.android.quickcharades.LeaderboardActivity"
+            android:label="@string/title_activity_leaderboard" >
+        </activity>
+        <activity
+            android:name="com.awesomekids.android.quickcharades.CategoryActivity"
+            android:label="@string/title_activity_category" >
+        </activity>
+        <activity
+            android:name="com.awesomekids.android.quickcharades.DifficultySelectActivity"
+            android:label="@string/title_activity_difficulty_select" >
+        </activity>
+        <activity
+            android:name="com.awesomekids.android.quickcharades.GameModeActivity"
+            android:label="@string/title_activity_game_mode" >
+        </activity>
     </application>
 
 </manifest>
