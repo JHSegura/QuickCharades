@@ -2,7 +2,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:background="@drawable/bg_ingame"
+                android:background="@drawable/bg_ingame_clean"
                 >
 
 
@@ -12,17 +12,74 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:onClick="onGameQuitButtonClick"
-        android:background="@android:color/transparent"
+        android:background="@android:drawable/btn_dialog"
         />
 
     <Button
         style="?android:attr/buttonStyleSmall"
         android:id="@+id/game_option_button"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_width="58dp"
+        android:layout_height="63dp"
         android:onClick="onGameOptionButtonClick"
-        android:layout_x="317dp"
-        android:layout_y="10dp"
-        android:background="@android:color/transparent"/>
+        android:layout_x="315dp"
+        android:layout_y="1dp"
+        android:background="@android:drawable/ic_menu_preferences"/>
 
+    <Button
+        android:layout_width="63dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/game_skip_button"
+        android:layout_x="320dp"
+        android:layout_y="82dp"
+        android:text="Skip"
+        android:background="@android:color/transparent"
+        android:textColor="#ff24ff22"/>
+
+    <TextView
+        android:layout_width="73dp"
+        android:layout_height="35dp"
+        android:text="Streak"
+        android:layout_x="25dp"
+        android:layout_y="69dp"
+        android:textColor="#fff6f9ff"
+        android:textAlignment="center"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="49dp"
+        android:layout_height="64dp"
+        android:id="@+id/game_streak_number"
+        android:text="0"
+        android:layout_x="28dp"
+        android:layout_y="97dp"
+
+        android:textSize="65sp"
+        android:textColor="#ffffffff"/>
+
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Score"
+        android:id="@+id/textView"
+        android:layout_x="14dp"
+        android:layout_y="288dp"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:layout_width="69dp"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:id="@+id/game_score_textview"
+        android:layout_x="15dp"
+        android:layout_y="305dp"
+        android:textSize="15sp"/>
+
+    <ImageView
+        android:layout_width="196dp"
+        android:layout_height="196dp"
+        android:id="@+id/game_imageView"
+        android:layout_x="105dp"
+        android:layout_y="110dp"
+        android:background="@drawable/image_001"/>
 </AbsoluteLayout>
