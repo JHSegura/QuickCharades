@@ -1,5 +1,6 @@
 package com.awesomekids.android.quickcharades;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -12,59 +13,34 @@ import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 
+import java.lang.reflect.Array;
+
 
 public class CategoryActivity extends ActionBarActivity {
     private Button cGoNextButton;
+    private ListView mCategoryList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
-//        String[] gameOptionStrings = {"Difficulty", "Volume Control", "Brightness", "Exit"};
-//
-//        ListAdapter settingsAdapter = new ArrayAdapter<String>(this,
-//                android.R.layout.simple_list_item_1,
-//                gameOptionStrings);
-//
-//        ListView settingsListView  = (ListView) findViewById(R.id.settings_ListView);
-//        settingsListView.setAdapter(settingsAdapter);
-//        settingsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                String optionString = String.valueOf(parent.getItemAtPosition(position));
-//                if (optionString.equals("Exit"))
-//                    finish();
-//            }
-//        }
+        addItemsToCategoryList();
+
+    }
+
+    public void addItemsToCategoryList() {
+        // instead of creating strings from the class, use xml resources, different fron settings
+        mCategoryList = (ListView) findViewById(R.id.category_ListView);
+        ArrayAdapter<CharSequence>  categoryListAdapter = ArrayAdapter.createFromResource(this,
+                R.array.category_types, android.R.layout.simple_list_item_1);
+        mCategoryList.setAdapter(categoryListAdapter);
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_category, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
     public void onGoNextButtonClick(View view){
         Intent goNextIntent = new Intent(this,GameModeActivity.class);
-
-        final int result = 1;
         startActivity(goNextIntent);
     }
     public void onDiffSelectQuitButtonClick(View view){
