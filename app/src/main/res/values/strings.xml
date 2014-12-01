@@ -3,12 +3,11 @@
 
     <string name="app_name">QuickCharades</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_friends">FriendsActivity</string>
+    <string name="title_activity_friends">Friends</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_leaderboard">LeaderboardActivity</string>
-    <string name="title_activity_setup_game">SetupGameActivity</string>
-    <string name="title_activity_category">CategoryActivity</string>
-    <string name="title_activity_difficulty_select">DifficultySelectActivity</string>
-    <string name="title_activity_game_mode">GameModeActivity</string>
+    <string name="title_activity_leaderboard">Leaderboard</string>
+    <string name="title_activity_category">Category</string>
+    <string name="title_activity_difficulty_select">Difficulty</string>
+    <string name="title_activity_game_mode">Game Mode</string>
 
 </resources>

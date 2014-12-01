@@ -35,7 +35,7 @@ public class MainActivity extends Activity {
 
     public void onPlayButtonClick(View view) {
         Intent getGameIntent = new Intent(this,
-                GameActivity.class);
+                DifficultySelectActivity.class);
         final int result = 1;
         startActivityForResult(getGameIntent, result); //GeoQuiz use 0 as default
     }

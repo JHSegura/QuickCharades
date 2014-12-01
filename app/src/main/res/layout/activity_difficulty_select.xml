@@ -14,7 +14,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="59dp" />
+        android:layout_marginBottom="59dp"
+        android:onClick="onGoNextButtonClick"/>
 
     <RadioGroup
         android:layout_width="fill_parent"

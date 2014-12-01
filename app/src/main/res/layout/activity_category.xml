@@ -25,5 +25,6 @@
         android:id="@+id/category_to_mode_button"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:longClickable="true" />
+        android:longClickable="true"
+        android:onClick="onGoNextButtonClick"/>
 </RelativeLayout>
