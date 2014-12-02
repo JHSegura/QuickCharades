@@ -9,5 +9,30 @@
     <string name="title_activity_category">Category</string>
     <string name="title_activity_difficulty_select">Difficulty</string>
     <string name="title_activity_game_mode">Game Mode</string>
+    <string name="title_activity_game_seteup">GameSetupActivity</string>
+
+    <string-array name="diff_select_array">
+        <item>Easy</item>
+        <item>Normal</item>
+        <item>Hard</item>
+    </string-array>
+
+    <string-array name="mode_select_array">
+        <item>Play Alone</item>
+        <item>Play With A Friend</item>
+        <item>Play With A Random Opponent</item>
+    </string-array>
+
+    <string-array name="category_select_array">
+
+    </string-array>
+
+    <string name="text_diff_select">Difficulty</string>
+    <string name="text_mode_select">Game Mode</string>
+    <string name="text_category_select">Category</string>
+    <string name="Play">PLAY</string>
+    <string name="text_number_of_questions_identifier">Number of Questions:</string>
+    <string name="text_time_per_question_identifier">Time Per Question:</string>
+    <string name="text_view_high_score">High Score: </string>
 
 </resources>

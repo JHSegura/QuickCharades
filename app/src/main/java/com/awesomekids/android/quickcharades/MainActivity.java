@@ -2,10 +2,7 @@ package com.awesomekids.android.quickcharades;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -22,7 +19,7 @@ public class MainActivity extends Activity {
 
         mPlayButton = (Button) findViewById(R.id.play_button);
         mSettingButton = (Button) findViewById(R.id.setting_button);
-        mFriendsButton = (Button) findViewById(R.id.friends_button);
+        mFriendsButton = (Button) findViewById(R.id.blank_text_2);
         mLeaderBoardsButton = (Button) findViewById(R.id.leaderboards_button);
 
     }
@@ -35,7 +32,7 @@ public class MainActivity extends Activity {
 
     public void onPlayButtonClick(View view) {
         Intent getGameIntent = new Intent(this,
-                DifficultySelectActivity.class);
+                GameSetupActivity.class);
         final int result = 1;
         startActivityForResult(getGameIntent, result); //GeoQuiz use 0 as default
     }

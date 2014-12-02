@@ -8,6 +8,8 @@ public enum QCategory {
     VOID("NONE"),
     HEROES("HEROES");
     private String name;
+    private static int num = 1;
     private QCategory(String value){this.name = value;}
     public String getValue(){return this.name;}
+    public static int getNum(){return num;}
 }
