@@ -5,8 +5,9 @@ package com.awesomekids.android.quickcharades;
  */
 public enum QCategory {
     //Categories
-    VOID(-1);
-    private int value;
-    private QCategory(int value){this.value = value;}
-    public int getValue(){return this.value;}
+    VOID("NONE"),
+    HEROES("HEROES");
+    private String name;
+    private QCategory(String value){this.name = value;}
+    public String getValue(){return this.name;}
 }
