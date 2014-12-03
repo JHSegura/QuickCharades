@@ -34,5 +34,7 @@
     <string name="text_number_of_questions_identifier">Number of Questions:</string>
     <string name="text_time_per_question_identifier">Time Per Question:</string>
     <string name="text_view_high_score">High Score: </string>
+    <string name="game_text_clear">CLEAR</string>
+    <string name="game_text_enter">ENTER</string>
 
 </resources>
