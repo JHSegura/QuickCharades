@@ -3,12 +3,13 @@ package com.awesomekids.android.quickcharades;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import java.util.ArrayList;
 
 /**
  * Created by Tony Lim on 11/27/14.
@@ -19,9 +20,21 @@ public class GameActivity extends Activity {
     private ImageView mImagePortrait;
     private TextView mAnswerTextView;
     private Button mEnterButton;
-    private int mCurrent;
-    private int mMaxImage;
-    static private Integer[] sImageIds = { R.drawable.image_001, R.drawable.image_002, R.drawable.image_003};
+    private int mCurrentQuestion;
+    private int mMaxQuestion;
+
+    //TODO : find a way to store ad retrieve image from database
+    private Integer[] mImageIds = { R.drawable.image_001, R.drawable.image_002, R.drawable.image_003};
+
+    // TODO : find a way to store and retrive strings from database
+    private String[] mImageNames = {
+            "ironman",
+            "avatar",
+            "mario"
+    };
+
+    private ArrayList<Question> mGameQuestions;
+
     static private Integer[] sLettersButtonId = {
             R.id.button, R.id.button2, R.id.button3, R.id.button4, R.id.button5, R.id.button6, R.id.button7,
             R.id.button8, R.id.button9, R.id.button10, R.id.button11, R.id.button12, R.id.button13, R.id.button14
@@ -30,21 +43,26 @@ public class GameActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         setContentView(R.layout.activity_game);
+
+
+
         // To pass informatin from main screen
         Intent activityThatCalled = getIntent();
 //        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
+        // TODO : Use information from category to generate different Questions into mGameQuestions
 
-        mCurrent = 0;
-        mMaxImage = sImageIds.length;
+        loadAllQuestions(); // this will allocate and get resources for the game
+                            // New Question object automatically generated randomized set of characters
+
+        mCurrentQuestion = 0;
+        mMaxQuestion = mImageIds.length;
         mImagePortrait = (ImageView) findViewById (R.id.game_imageView);
         mImagePortrait.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                mImagePortrait.setBackgroundResource();
-                mImagePortrait.setImageResource(sImageIds[++mCurrent % mMaxImage]);
+                goToNextQuestion(v);
             }
         });
 
@@ -60,8 +78,13 @@ public class GameActivity extends Activity {
 
             }
         });
+    }
 
-
+    private void loadAllQuestions() {
+        mGameQuestions = new ArrayList<>();
+        for (int i = 0; i < mImageNames.length; i++) {
+            mGameQuestions.add(new Question(mImageIds[i], mImageNames[i]));
+        }
     }
 
     public void letterClicked(View v){
@@ -95,13 +118,27 @@ public class GameActivity extends Activity {
         startActivity(getSettingsIntent);
     }
 
+    /**
+     * This will generate random letters according to current question
+     * Display the random letters and unhide them
+     * @param v
+     */
     public void setupAllLettersButton(View v) {
         // setting up the visibility
-        for (Integer letterId : sLettersButtonId) {
-            findViewById(letterId).setClickable(true);
-            findViewById(letterId).setVisibility(v.VISIBLE);
+        ArrayList<Character> randomLetters = mGameQuestions
+                .get(mCurrentQuestion)
+                .getRandomizedLetters();
+
+        //TODO : Debug to find out if the length of mGameQuestion, letterID, etc is the same with mMaxQuestion
+        Log.d("Debugging actual answer", mGameQuestions.get(mCurrentQuestion).getAnswer());
+        Log.d("Debugging random letters", randomLetters.toString());
+        for (int i = 0; i < mMaxQuestion; i++) {
+            ((Button) findViewById(sLettersButtonId[i]))
+                    .setText(randomLetters.get(i));
+
+            findViewById(sLettersButtonId[i]).setClickable(true);
+            findViewById(sLettersButtonId[i]).setVisibility(v.VISIBLE);
         }
-        // implement randomize here later
     }
 
     public void clearButton(View view) {
@@ -113,4 +150,9 @@ public class GameActivity extends Activity {
         setupAllLettersButton(view);
     }
 
+    public void goToNextQuestion(View view) {
+        mCurrentQuestion = ++mCurrentQuestion % mMaxQuestion;
+        mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
+        clearButton(view);
+    }
 }
