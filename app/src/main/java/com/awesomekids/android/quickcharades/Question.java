@@ -32,7 +32,6 @@ public class Question {
         mRandomizedLetters = new ArrayList<Character>();
         mImageID = imageID;
         mAnswer = answer;
-        randomizeLetters();
     }
 
     private void randomizeLetters() {
@@ -60,6 +59,7 @@ public class Question {
     public int getImageID(){return mImageID; }//return new Image(this.image.getName(),this.image.getCategory()); //Return a copy of the image or return the image?
 
     public ArrayList<Character> getRandomizedLetters() {
+        randomizeLetters();
         return mRandomizedLetters;
     }
 

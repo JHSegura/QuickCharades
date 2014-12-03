@@ -39,7 +39,6 @@
         android:layout_y="77dp"
         android:text="Skip"
         android:background="@drawable/rounded_btn"
-        android:onClick="goToNextQuestion"
         android:textColor="#ff24ff22"/>
 
     <TextView
@@ -104,7 +103,6 @@
             android:layout_height="wrap_content"
             android:text="@string/game_text_clear"
             android:background="#ffff201b"
-            android:onClick="clearButton"
             />
 
         <TextView
@@ -150,91 +148,91 @@
             android:layout_height="50dp"
             android:id="@+id/button2"
             android:onClick="letterClicked"
-            android:text="O" />
+            android:text="A" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button3"
             android:onClick="letterClicked"
-            android:text="C" />
+            android:text="A" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button4"
             android:onClick="letterClicked"
-            android:text="D" />
+            android:text="A" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button5"
             android:onClick="letterClicked"
-            android:text="E" />
+            android:text="A" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button6"
             android:onClick="letterClicked"
-            android:text="F" />
+            android:text="A" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button7"
             android:onClick="letterClicked"
-            android:text="G" />
+            android:text="A" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button8"
             android:onClick="letterClicked"
-            android:text="R" />
+            android:text="A" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button9"
             android:onClick="letterClicked"
-            android:text="I" />
+            android:text="A" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button10"
             android:onClick="letterClicked"
-            android:text="J" />
+            android:text="A" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button11"
             android:onClick="letterClicked"
-            android:text="K" />
+            android:text="A" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button12"
             android:onClick="letterClicked"
-            android:text="L" />
+            android:text="A" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button13"
             android:onClick="letterClicked"
-            android:text="M" />
+            android:text="A" />
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button14"
             android:onClick="letterClicked"
-            android:text="N"/>
+            android:text="A"/>
 
     </GridLayout>
 
