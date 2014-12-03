@@ -1,6 +1,10 @@
 # QuickCharades
 
 
+
+[![ScreenShot](https://github.com/Josue3205/QuickCharades/blob/master/app/src/main/res/drawable-mdpi/bg_main_clean.png)](http://tinypic.com/r/b3k8ap/8)
+
+
 Project is build on:
 - Android Studio
 - Graddle build
