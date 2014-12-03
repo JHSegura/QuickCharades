@@ -5,36 +5,41 @@
                 android:background="@drawable/bg_ingame_clean"
                 >
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/close_button"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="45dp"
+            android:layout_height="42dp"
+            android:onClick="onGameQuitButtonClick"
+            android:background="@android:drawable/btn_dialog"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:id="@+id/game_option_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onGameOptionButtonClick"
+            android:background="@android:drawable/ic_menu_preferences"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+        </RelativeLayout>
+
 
     <Button
-        android:id="@+id/close_button"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="45dp"
-        android:layout_height="42dp"
-        android:layout_x="0dp"
-        android:layout_y="0dp"
-        android:onClick="onGameQuitButtonClick"
-        android:background="@android:drawable/btn_dialog"
-        />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:id="@+id/game_option_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onGameOptionButtonClick"
-        android:layout_x="326dp"
-        android:layout_y="8dp"
-        android:background="@android:drawable/ic_menu_preferences"/>
-
-    <Button
-        android:layout_width="63dp"
-        android:layout_height="wrap_content"
+        android:layout_width="72dp"
+        android:layout_height="59dp"
         android:id="@+id/game_skip_button"
-        android:layout_x="320dp"
-        android:layout_y="82dp"
+        android:layout_x="309dp"
+        android:layout_y="77dp"
         android:text="Skip"
-        android:background="@android:color/transparent"
+        android:background="@drawable/rounded_btn"
+        android:onClick="goToNextQuestion"
         android:textColor="#ff24ff22"/>
 
     <TextView
