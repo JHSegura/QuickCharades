@@ -5,34 +5,34 @@ package com.awesomekids.android.quickcharades;
  */
 public class Stat {
     public int maxScore;
-    public Streak maxStreak;
+    public int maxStreak;
     public float WLRatio;
     public int wins;
     public int losses;
     public Stat(){
         maxScore = 0;
-        maxStreak = new Streak();
+        maxStreak = 0;
         WLRatio = 0.0f;
         wins = 0;
         losses = 0;
     }
-    public Stat(int maxScore, Streak maxStreak, float WLRatio, int wins, int losses){
+    public Stat(int maxScore, int maxStreak, float WLRatio, int wins, int losses){
         this.maxScore = maxScore;
-        this.maxStreak = new Streak(maxStreak.getStreak());
+        this.maxStreak = maxStreak;
         this.WLRatio = WLRatio;
         this.wins = wins;
         this.losses = losses;
     }
     public Stat(Stat Other){
         this.maxScore = Other.maxScore;
-        this.maxStreak = new Streak(Other.maxStreak.getStreak());
+        this.maxStreak = Other.maxStreak;
         this.WLRatio = Other.WLRatio;
         this.wins = Other.wins;
         this.losses = Other.losses;
     }
     public void setStats(Stat Other){
         this.maxScore = Other.maxScore;
-        this.maxStreak = new Streak(Other.maxStreak.getStreak());
+        this.maxStreak = Other.maxStreak;
         this.WLRatio = Other.WLRatio;
         this.wins = Other.wins;
         this.losses = Other.losses;
