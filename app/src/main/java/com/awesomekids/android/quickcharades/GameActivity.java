@@ -76,9 +76,6 @@ public class GameActivity extends Activity {
         Intent activityThatCalled = getIntent();
 //        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
 
-        // TODO : find a way to load informations from player database
-        if(mPlayer == null)
-            mPlayer = new Player();
 
         mCurrentQuestion = 0;
         mMaxQuestion = mImageIds.length;
@@ -121,6 +118,14 @@ public class GameActivity extends Activity {
             }
         });
 
+        // TODO : find a way to load informations from player database
+        if(mPlayer == null)
+            mPlayer = new Player();
+        else { //temporary fix, import data using singletons design (static player)
+            mScoreTextView.setText("" + mPlayer.currentScore);
+            mStreakView.setText("" + mPlayer.currentStreak);
+        }
+
         // ISSUE : This can only be run once
         mTimerBar = (ProgressBar) findViewById(R.id.barTimer);
         final Thread timerThread = new Thread() {
@@ -143,7 +148,9 @@ public class GameActivity extends Activity {
                 }
             }
         };
-        timerThread.start();
+        // TODO : Fix progress bar
+//        timerThread.start(); // Cause crash and very slow
+
 
         // TODO : Use information from category to generate different Questions into mGameQuestions
         loadAllQuestions(); // this will allocate and get resources for the game
@@ -154,7 +161,7 @@ public class GameActivity extends Activity {
     /**
      * Function to run and show the countdown timer progress bar
      */
-    private void runTimer() {
+//    private void runTimer() {
 
 //        mbActive = true;
 //        final Thread t = new Thread() {
@@ -173,8 +180,7 @@ public class GameActivity extends Activity {
 //            }
 //        };
 //        t.start();
-
-    }
+//    }
 
 
     public void updateProgress(final int timePassed) {

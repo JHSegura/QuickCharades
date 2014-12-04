@@ -54,5 +54,6 @@ Target SDL : API Level 21: Android L
 * Create Dynamic textboxes inflator : http://www.startandroid.ru/en/lessons/complete-list/220-lesson-16-creating-layout-programmatically-layoutparams.html
 *
 
-## Flow
-* Play -> Choose category -> play gme
+# BUG 
+* Progress bar not working
+*
