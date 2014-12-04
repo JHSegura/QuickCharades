@@ -9,22 +9,22 @@
     <string name="title_activity_category">Category</string>
     <string name="title_activity_difficulty_select">Difficulty</string>
     <string name="title_activity_game_mode">Game Mode</string>
-    <string name="title_activity_game_seteup">GameSetupActivity</string>
+    <string name="title_activity_game_seteup">Game Setup</string>
 
     <string-array name="diff_select_array">
         <item>Easy</item>
         <item>Normal</item>
         <item>Hard</item>
     </string-array>
-
     <string-array name="mode_select_array">
         <item>Play Alone</item>
         <item>Play With A Friend</item>
         <item>Play With A Random Opponent</item>
     </string-array>
-
-    <string-array name="category_select_array">
-
+    <string-array name="length_select_array">
+        <item>Short</item>
+        <item>Medium</item>
+        <item>Long</item>
     </string-array>
 
     <string name="text_diff_select">Difficulty</string>
@@ -38,5 +38,6 @@
     <string name="game_text_enter">ENTER</string>
     <string name="toast_correct_notification">Answer is Correct</string>
     <string name="toast_incorrect_notification">Answer is Wrong</string>
+    <string name="title_activity_game_result">Results</string>
 
 </resources>

@@ -6,13 +6,15 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="21" />
 
-    <android:uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" /> <!-- <android:uses-permission -->
+    <!--<android:uses-permission-->
+        <!--android:name="android.permission.WRITE_EXTERNAL_STORAGE"-->
+        <!--android:maxSdkVersion="18" />-->
+    <!--<android:uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <!--<android:uses-permission-->
+        <!--android:name="android.permission.READ_EXTERNAL_STORAGE"-->
+        <!--android:maxSdkVersion="18" />-->
+
+    <!-- <android:uses-permission -->
     <!-- android:name="android.permission.WRITE_EXTERNAL_STORAGE" -->
     <!-- android:maxSdkVersion="18" /> -->
     <!-- <android:uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
@@ -65,6 +67,10 @@
         <activity
             android:name="com.awesomekids.android.quickcharades.GameSetupActivity"
             android:label="@string/title_activity_game_seteup" >
+        </activity>
+        <activity
+            android:name="com.awesomekids.android.quickcharades.GameResultActivity"
+            android:label="@string/title_activity_game_result" >
         </activity>
     </application>
 
