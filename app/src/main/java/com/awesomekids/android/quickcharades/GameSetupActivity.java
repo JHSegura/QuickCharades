@@ -23,6 +23,7 @@ public class GameSetupActivity extends ActionBarActivity {
     private Spinner diffSpinner;
     private Spinner modeSpinner;
     private Spinner categorySpinner;
+    private Spinner lengthSpinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +34,7 @@ public class GameSetupActivity extends ActionBarActivity {
         createDiffSpinner();
         createModeSpinner();
         createCategorySpinner();
+        createLengthSpinner();
     }
     public void createDiffSpinner(){
         diffSpinner = (Spinner) findViewById(R.id.spinner_diff_select);
@@ -68,16 +70,27 @@ public class GameSetupActivity extends ActionBarActivity {
         }
         categorySpinner.setOnItemSelectedListener(new CategorySpinnerActivity());
     }
+    public void createLengthSpinner(){
+        lengthSpinner = (Spinner) findViewById(R.id.spinner_length_select);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.length_select_array,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        lengthSpinner.setAdapter(adapter);
+        lengthSpinner.setOnItemSelectedListener(new LengthSpinnerActivity());
+    }
 
     public void onGoToPlayButtonClick(View view){
-        Intent goPlayIntent = new Intent(this,GameActivity.class);
-        int[] gameSettings = new int[2]; //Maybe better if we store as strings instead
+        Intent goPlayIntent = new Intent(this,GameActivity.class); //Set this back to gameactivity
+        String[] gameSettings = new String[3]; //Maybe better if we store as strings instead
         gameSettings[0] = diffSpinner.getSelectedItem().toString() == "Easy" ? Difficulty.EASY.getValue() :
                 (diffSpinner.getSelectedItem().toString() == "Normal" ?
                         Difficulty.MEDIUM.getValue() : Difficulty.HARD.getValue());
         gameSettings[1] = modeSpinner.getSelectedItem().toString() == "Play Alone" ? Mode.SINGLE.getValue() :
                 (modeSpinner.getSelectedItem().toString() == "Play With A Friend" ?
                         Mode.FRIEND.getValue() : Mode.RANDOM.getValue());
+        gameSettings[2] = modeSpinner.getSelectedItem().toString() == "Short" ? Length.SHORT.getValue() :
+                (modeSpinner.getSelectedItem().toString() == "Medium" ?
+                        Length.MEDIUM.getValue() : Length.LONG.getValue());
 //        numQText.setText(diffSpinner.getSelectedItem().toString()); //Just used to test if the above works
 //        numTText.setText(modeSpinner.getSelectedItem().toString());
         goPlayIntent.putExtra(categorySpinner.getSelectedItem().toString(),gameSettings); //Pass along the game mode/difficulty/category info to gameactivity so that it can begin an appropriate game
@@ -93,15 +106,12 @@ public class GameSetupActivity extends ActionBarActivity {
             String diff = parent.getItemAtPosition(pos).toString();
 
             if(diff.compareTo("Easy")==0){ //Can always change later
-                numQText.setText("15");
                 numTText.setText("45s");
             } //easy
             else if(diff.compareTo("Normal")==0){
-                numQText.setText("30");
                 numTText.setText("30s");
             }//set to normal
             else if(diff.compareTo("Hard")==0){
-                numQText.setText("50");
                 numTText.setText("15s");
             }//hard
             else{
@@ -144,25 +154,29 @@ public class GameSetupActivity extends ActionBarActivity {
             Toast.makeText(getBaseContext(),"Category not selected",Toast.LENGTH_SHORT).show();
         }
     }
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_game_setup, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+    public class LengthSpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener { //Implement stuff to show related to categories
+
+        public void onItemSelected(AdapterView<?> parent, View view,
+                                   int pos, long id) {
+            String length = parent.getItemAtPosition(pos).toString();
+
+            if(length.compareTo("Short")==0){ //Can always change later
+                numQText.setText("15");
+            } //easy
+            else if(length.compareTo("Medium")==0){
+                numQText.setText("30");
+            }//set to normal
+            else if(length.compareTo("Long")==0){
+                numQText.setText("50");
+            }//hard
+            else{
+
+            }
+
+        }
+
+        public void onNothingSelected(AdapterView<?> parent) {
+            Toast.makeText(getBaseContext(), "Length not selected", Toast.LENGTH_SHORT).show();
+        }
+    }
 }

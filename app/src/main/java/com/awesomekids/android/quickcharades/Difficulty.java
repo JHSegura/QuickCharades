@@ -4,13 +4,13 @@ package com.awesomekids.android.quickcharades;
  * Created by Joseph Park on 11/29/2014.
  */
 public enum Difficulty {
-    VOID(-1),
-    EASY(0),
-    MEDIUM(1),
-    HARD(2);
+    VOID("VOID"),
+    EASY("EASY"),
+    MEDIUM("NORMAL"),
+    HARD("HARD");
 
-    private int value;
-    private Difficulty(int value){this.value = value;}
-    public int getValue(){return this.value;}
+    private String value;
+    private Difficulty(String value){this.value = value;}
+    public String getValue(){return this.value;}
 }
 
