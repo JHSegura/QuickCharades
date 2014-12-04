@@ -36,5 +36,7 @@
     <string name="text_view_high_score">High Score: </string>
     <string name="game_text_clear">CLEAR</string>
     <string name="game_text_enter">ENTER</string>
+    <string name="toast_correct_notification">Answer is Correct</string>
+    <string name="toast_incorrect_notification">Answer is Wrong</string>
 
 </resources>

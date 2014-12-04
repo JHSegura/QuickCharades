@@ -7,10 +7,10 @@ import java.util.ArrayList;
  */
 public class Player {
     private int playerID;
-    private String playerName;
+    public String playerName;
     private Stat playerStats;
-    private int currentScore;
-    private Streak currentStreak;
+    public int currentScore;
+    public int currentStreak;
     private Status status;
     private ArrayList<Player> friendsList; //How are we going to do this?
     private int rank;
@@ -21,18 +21,18 @@ public class Player {
         playerName = "";
         playerStats = new Stat();
         currentScore = 0;
-        currentStreak = new Streak();
+        currentStreak = 0;
         status = Status.VOID;
         friendsList = new ArrayList<Player>();
         rank = 0;
     }
-    public Player(int ID, String name, Stat stats, int currentScore, Streak currentStreak,
+    public Player(int ID, String name, Stat stats, int currentScore, int currentStreak,
                   Status status, ArrayList<Player> friendsList, int rank){
         playerID = ID;
         playerName = name;
         playerStats = new Stat(stats);
         this.currentScore = currentScore;
-        currentStreak = new Streak(currentStreak.getStreak());
+        this.currentStreak = currentStreak;
         this.status = status;
         this.friendsList = new ArrayList<Player>(friendsList);
         this.rank = rank;
@@ -42,7 +42,7 @@ public class Player {
         playerName = player.getName();
         playerStats = new Stat(player.getStats());
         this.currentScore = player.getCurrentScore();
-        currentStreak = new Streak(player.getCurrentStreak().getStreak());
+        currentStreak = 0;
         this.status = player.getStatus();
         this.friendsList = new ArrayList<Player>(player.getFriendsList());
         this.rank = player.getRank();
@@ -51,7 +51,6 @@ public class Player {
     public String getName(){return playerName;}
     public Stat getStats(){return playerStats;}//or return a copy?
     public int getCurrentScore(){return currentScore;}
-    public Streak getCurrentStreak(){return currentStreak;} //Same as stats;
     public Status getStatus(){return status;}
     public ArrayList<Player> getFriendsList(){return friendsList;} //Same
     public int getRank(){return rank;}
@@ -62,7 +61,6 @@ public class Player {
     public void setCurrentScore(int score){currentScore = score;}
     public void setStatus(Status status){this.status = status;}
     public void setRank(int rank){this.rank = rank;}
-    public void setCurrentStreak(Streak streak){currentStreak.setStreak(streak.getStreak());}
 
     public boolean addFriend(Player friend){
         //Scan database to check if player exists
@@ -86,6 +84,6 @@ public class Player {
 
     public void resetRank(){rank = 0;}
     public void resetScore(){currentScore = 0;}
-    public void resetStreak(){currentStreak.setStreak(0);}
+    public void resetStreak(){currentStreak = 0;}
     public void resetStats(){playerStats.setStats(new Stat());}
 }

@@ -3,11 +3,16 @@ package com.awesomekids.android.quickcharades;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -18,10 +23,18 @@ public class GameActivity extends Activity {
 
 
     private ImageView mImagePortrait;
+
     private TextView mAnswerTextView;
+    private TextView mScoreTextView;
+    private TextView mStreakView;
+
     private Button mEnterButton;
     private Button mClearButton;
     private Button mSkipButton;
+
+    static private Player mPlayer; // implement Singletons
+
+    private Toast mAnswerToast;
     private int mCurrentQuestion;
     private int mMaxQuestion;
 
@@ -31,7 +44,7 @@ public class GameActivity extends Activity {
     // TODO : find a way to store and retrive strings from database
     private String[] mImageNames = {
             "IRONMAN",
-            "AVATAR",
+            "AANG",
             "MARIO"
     };
 
@@ -53,6 +66,9 @@ public class GameActivity extends Activity {
         Intent activityThatCalled = getIntent();
 //        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
 
+        // TODO : find a way to load informations from player database
+        if(mPlayer == null)
+            mPlayer = new Player();
 
         mCurrentQuestion = 0;
         mMaxQuestion = mImageIds.length;
@@ -65,14 +81,16 @@ public class GameActivity extends Activity {
         });
 
         mAnswerTextView = (TextView) findViewById(R.id.game_answer_textview);
+        mScoreTextView = (TextView) findViewById(R.id.game_score_textview);
+        mStreakView = (TextView) findViewById(R.id.game_streak_number);
+
+
         mEnterButton    = (Button) findViewById(R.id.game_button_enter);
         mEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            // TODO : Make a system to check whether the text input is equal to answer
-                // TODO : make a Toast to let the user know whether the answer is correct
-                // TODO : Implement a score system
-                // TODO : If its correct, go to next question
+                checkAnswer();
+
 
             }
         });
@@ -87,6 +105,7 @@ public class GameActivity extends Activity {
         mSkipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mPlayer.currentScore -= 20;
                 goToNextQuestion();
             }
         });
@@ -147,9 +166,9 @@ public class GameActivity extends Activity {
                 .get(mCurrentQuestion)
                 .getRandomizedLetters(); // each time this is called, it will always be random
 
-        Log.d("Debugging actual answer", mGameQuestions.get(mCurrentQuestion).getAnswer());
-        Log.d("Debugging random letters(count manually) ", randomLetters.toString());
-        Log.d("Length of sLetterButtonId", "" + sLettersButtonId.length);
+//        Log.d("Debugging actual answer", mGameQuestions.get(mCurrentQuestion).getAnswer());
+//        Log.d("Debugging random letters(count manually) ", randomLetters.toString());
+//        Log.d("Length of sLetterButtonId", "" + sLettersButtonId.length);
 
         Button myLetterView;
         for (int i = 0; i < sLettersButtonId.length; i++) {
@@ -160,12 +179,48 @@ public class GameActivity extends Activity {
         }
     }
 
+    private void checkAnswer() {
+        boolean isCorrect = false;
+        if( mAnswerTextView.getText().toString().equals( mGameQuestions.get(mCurrentQuestion).getAnswer()))
+            isCorrect = true;
+        int toastMessageID = 0;
+        toastMessageID = ( isCorrect ?
+                R.string.toast_correct_notification :
+                R.string.toast_incorrect_notification);
+        mAnswerToast = Toast.makeText(this, toastMessageID, Toast.LENGTH_SHORT);
+        mAnswerToast.setGravity(Gravity.CENTER, 0, 0);
+        mAnswerToast.show();
+
+        processScore(isCorrect); // update score, streak, and display
+
+        if (isCorrect) {
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    // Do something after 1.5s = 1500ms
+                    goToNextQuestion();
+                }
+            }, 1500);
+        }
+    }
+
+    public void processScore(boolean trueFalse) {
+        // TODO : Implement a multipler and different score for different difficulty
+        if(trueFalse) {
+            mPlayer.currentScore += 100; // for now, use 100
+            mPlayer.currentStreak += 1;
+        }
+        else {
+            mPlayer.currentScore -= 20; // temporary
+            mPlayer.currentStreak = 0;
+        }
+        mScoreTextView.setText("" + mPlayer.currentScore);
+        mStreakView.setText("" + mPlayer.currentStreak);
+    }
     public void clearButton() {
         mAnswerTextView.setText("");
-
-        // TODO : Also reset the HashList
-        // TODO : Reset the Array
-
+        mPlayer.currentScore -= 5;
         setupAllLettersButton();
     }
 

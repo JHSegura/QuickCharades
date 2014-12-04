@@ -25,5 +25,4 @@ public class PowerUp {
     public void setRequirement(int requirement){this.requirement = requirement;}
     public void setMultiplayerOnly(boolean multiplayerOnly){this.multiplayerOnly = multiplayerOnly;}
 
-    public boolean isAvailable(Streak streak){return streak.getStreak() >= requirement;}
 }
