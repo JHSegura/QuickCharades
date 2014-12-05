@@ -3,12 +3,17 @@ package com.awesomekids.android.quickcharades;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
+import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +36,11 @@ public class GameActivity extends Activity {
     private Button mEnterButton;
     private Button mClearButton;
     private Button mSkipButton;
+
+
+    private final int RUNTIME = 45000; // 45 seconds
+    protected boolean mbActive;
+    private ProgressBar mTimerBar;
 
     static private Player mPlayer; // implement Singletons
 
@@ -66,9 +76,6 @@ public class GameActivity extends Activity {
         Intent activityThatCalled = getIntent();
 //        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
 
-        // TODO : find a way to load informations from player database
-        if(mPlayer == null)
-            mPlayer = new Player();
 
         mCurrentQuestion = 0;
         mMaxQuestion = mImageIds.length;
@@ -98,26 +105,100 @@ public class GameActivity extends Activity {
         mClearButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                clearButton();
+                mAnswerTextView.setText("");
+                resetAllLettersButton();
             }
         });
         mSkipButton = (Button) findViewById(R.id.game_skip_button);
         mSkipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mPlayer.currentScore -= 20;
+//                mPlayer.currentScore -= 20;
                 goToNextQuestion();
             }
         });
+
+        // TODO : find a way to load informations from player database
+        if(mPlayer == null)
+            mPlayer = new Player();
+        else { //temporary fix, import data using singletons design (static player)
+            mScoreTextView.setText("" + mPlayer.currentScore);
+            mStreakView.setText("" + mPlayer.currentStreak);
+        }
+
+        // ISSUE : This can only be run once
+        mTimerBar = (ProgressBar) findViewById(R.id.barTimer);
+        final Thread timerThread = new Thread() {
+            @Override
+            public void run() {
+                mbActive = true;
+                try {
+                    int waited = 0;
+                    while (mbActive && (waited < RUNTIME)) {
+                        sleep(200); // the progress bar update every 200 ms
+                        if (mbActive) {
+                            waited += 200;
+                            updateProgress(waited);
+                        }
+                    }
+                } catch (InterruptedException e) {
+                    //do nothing
+                } finally {
+                    onContinue();
+                }
+            }
+        };
+        // TODO : Fix progress bar
+//        timerThread.start(); // Cause crash and very slow
 
 
         // TODO : Use information from category to generate different Questions into mGameQuestions
         loadAllQuestions(); // this will allocate and get resources for the game
                             // new question does not automatically generate random letters
         setupAllLettersButton();
-
     } // end of onCreate
 
+    /**
+     * Function to run and show the countdown timer progress bar
+     */
+//    private void runTimer() {
+
+//        mbActive = true;
+//        final Thread t = new Thread() {
+//            @Override
+//            public void run() {
+//                int jumpTime = 0;
+//                while (jumpTime < totalProgressTime) {
+//                    try {
+//                        sleep(200);
+//                        jumpTime += 5;
+//                        mTimerBar.setProgress(jumpTime);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        };
+//        t.start();
+//    }
+
+
+    public void updateProgress(final int timePassed) {
+        if(null != mTimerBar) {
+            // Ignore rounding error here
+            final int progress = mTimerBar.getMax() * timePassed / RUNTIME;
+            mTimerBar.setProgress(progress);
+        }
+    }
+
+    public void onContinue() {
+        // perform any final actions here
+        goToNextQuestion();
+    }
+
+    /**
+     * Load questions
+     */
     private void loadAllQuestions() {
         mGameQuestions = new ArrayList<>();
         for (int i = 0; i < mImageNames.length; i++) {
@@ -179,6 +260,15 @@ public class GameActivity extends Activity {
         }
     }
 
+    public void resetAllLettersButton() {
+        Button myLetterView;
+        for (int i = 0; i < sLettersButtonId.length; i++) {
+            myLetterView = (Button) findViewById(sLettersButtonId[i]);
+            myLetterView.setClickable(true);
+            myLetterView.setVisibility(View.VISIBLE);
+        }
+    }
+
     private void checkAnswer() {
         boolean isCorrect = false;
         if( mAnswerTextView.getText().toString().equals( mGameQuestions.get(mCurrentQuestion).getAnswer()))
@@ -218,18 +308,14 @@ public class GameActivity extends Activity {
         mScoreTextView.setText("" + mPlayer.currentScore);
         mStreakView.setText("" + mPlayer.currentStreak);
     }
-    public void clearButton() {
+
+    public void goToNextQuestion() {
+//        mTimerBar.setProgress(0);
+        // TODO : Fix the crashing bug here if it is set to 0
+        mCurrentQuestion = ++mCurrentQuestion % mMaxQuestion;
+        mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
         mAnswerTextView.setText("");
-        mPlayer.currentScore -= 5;
         setupAllLettersButton();
     }
 
-    public void goToNextQuestion() {
-        mCurrentQuestion = ++mCurrentQuestion % mMaxQuestion;
-        mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
-        clearButton();
-    }
-
 }
-
-// TODO : Implement a timer object

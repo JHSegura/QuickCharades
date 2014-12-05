@@ -2,7 +2,7 @@
 
 
 
-[![ScreenShot](https://github.com/Josue3205/QuickCharades/blob/master/app/src/main/res/drawable-mdpi/bg_main_clean.png)](http://tinypic.com/r/b3k8ap/8)
+[![ScreenShot](https://github.com/Josue3205/QuickCharades/blob/master/app/src/main/res/drawable-mdpi/bg_main_clean.png)](http://tinypic.com/r/vykzt2/8)
 
 
 Project is build on:
@@ -54,5 +54,6 @@ Target SDL : API Level 21: Android L
 * Create Dynamic textboxes inflator : http://www.startandroid.ru/en/lessons/complete-list/220-lesson-16-creating-layout-programmatically-layoutparams.html
 *
 
-## Flow
-* Play -> Choose category -> play gme
+# BUG 
+* Progress bar not working
+*

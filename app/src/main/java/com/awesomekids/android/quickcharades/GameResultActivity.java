@@ -37,6 +37,7 @@ public class GameResultActivity extends ActionBarActivity {
         Length length = Length.SHORT;
         QCategory cat = QCategory.HEROES;
         //Maybe make these instance vars
+        //Perhaps add length difficulty, category,
         TextView scoreView = (TextView) findViewById(R.id.text_score_value);
         TextView timeView = (TextView) findViewById(R.id.text_total_time_value);
         TextView qView = (TextView) findViewById(R.id.text_question_value);
