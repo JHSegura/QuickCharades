@@ -5,100 +5,161 @@
     android:paddingTop="@dimen/activity_vertical_margin"
 
     android:background="@drawable/bg_main_clean"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity"
+    android:orientation="vertical">
 
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:layout_toStartOf="@+id/leaderboards_button"
-        android:layout_alignParentBottom="true"
+        android:layout_height="280dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/space" />
+
+    <Button
+        android:id="@+id/play_button"
+        android:onClick="onPlayButtonClick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        android:background="@android:color/transparent"
+        android:text="Play            "
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:visibility="visible"
+        android:typeface="sans"
+        android:layout_below="@+id/space"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/spaceBETWEEN" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginBottom="72dp"
-        android:id="@+id/linearLayout">
+        android:id="@+id/spaceBETWEEN"
+        android:layout_above="@+id/group_menu_buttons" />
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/group_menu_buttons"
+        android:layout_alignEnd="@+id/space2"
+        android:layout_above="@+id/space2">
 
         <Space
             android:layout_width="24dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/space_1" />
+            android:layout_height="wrap_content"
+            android:id="@+id/space_1"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="0dp" />
 
         <Button
             android:layout_width="53dp"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:id="@+id/howto_button"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:layout_alignParentLeft="false"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@+id/space_1" />
 
         <Space
             android:layout_width="35dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/space_2" />
+            android:layout_height="wrap_content"
+            android:id="@+id/space_2"
+            android:layout_alignParentLeft="false"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@+id/howto_button" />
 
         <Button
             android:id="@+id/leaderboards_button"
             android:onClick="onLeaderboardsButtonClick"
             android:layout_width="53dp"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:padding="24dp"
-            android:background="@android:color/transparent" />
+            android:background="@android:color/transparent"
+            android:layout_alignParentLeft="false"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@+id/space_2" />
 
         <Space
             android:layout_width="35dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/space_3" />
+            android:layout_height="wrap_content"
+            android:id="@+id/space_3"
+            android:layout_alignParentLeft="false"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@+id/leaderboards_button" />
 
         <Button
             android:id="@+id/friends_button"
             android:onClick="onFriendsButtonClick"
             android:layout_width="53dp"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:padding="24dp"
-            android:background="@android:color/transparent"/>
+            android:background="@android:color/transparent"
+            android:layout_alignParentLeft="false"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@+id/space_3" />
 
         <Space
-            android:layout_width="33dp"
-            android:layout_height="fill_parent"
-            android:id="@+id/space_4" />
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/space_4"
+            android:layout_alignParentLeft="false"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@+id/friends_button" />
 
         <Button
             android:id="@+id/setting_button"
             android:onClick="onSettingButtonClick"
             android:layout_width="53dp"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:padding="24dp"
             android:background="@android:color/transparent"
-            android:layout_marginEnd="63dp"/>
+            android:layout_marginEnd="63dp"
+            android:layout_alignParentLeft="false"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="false"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@+id/space_4" />
 
 
-    </LinearLayout>
+    </RelativeLayout>
 
-    <Button
-        android:id="@+id/play_button"
-        android:onClick="onPlayButtonClick"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
-        android:padding="20dp"
-        android:background="@android:color/transparent"
-        android:text="@string/Play"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_above="@+id/linearLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="40dp"
-        android:textColor="#ffffff"
-        android:visibility="visible"
-        android:typeface="sans" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/space2"
+        android:layout_above="@+id/text_view_high_score"
+        android:layout_alignRight="@+id/play_button"
+        android:layout_alignEnd="@+id/play_button" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/text_view_high_score"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:singleLine="true"
         android:textColor="@color/accent_material_dark"
-        android:text="@string/text_view_high_score" />
+        android:text="@string/text_view_high_score"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

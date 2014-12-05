@@ -19,7 +19,6 @@ public class GameResultActivity extends ActionBarActivity {
     private TextView diffView;
     private TextView lengthView;
     private TextView catView;
-    private TextView modeView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +42,7 @@ public class GameResultActivity extends ActionBarActivity {
         TextView streakView = (TextView) findViewById(R.id.text_view_streak);
 
         scoreView.setText("Score: "+score);
-        timeView.setText("Time: "+time);
+        timeView.setText("Total Time: "+time);
         qView.setText("Correct Questions: "+qAnswered+"/"+qTotal);
         streakView.setText("Max Streak: "+streak);
         updatePlayerInfo(score,time,qAnswered,qTotal,streak);
@@ -51,12 +50,10 @@ public class GameResultActivity extends ActionBarActivity {
         diffView = (TextView) findViewById(R.id.text_view_diff);
         lengthView = (TextView) findViewById(R.id.text_view_length);
         catView = (TextView) findViewById(R.id.text_view_category);
-        modeView = (TextView) findViewById(R.id.text_view_mode);
 
         diffView.setText("Difficulty: "+diff.getValue());
         lengthView.setText("Length: "+length.getValue());
         catView.setText("Category: "+cat.getValue());
-        modeView.setText("Game Mode:"+mode.getValue());
         playAgainButton = (Button) findViewById(R.id.play_again_button);
         goMainMenuButton = (Button) findViewById(R.id.from_result_to_menu_button);
     }

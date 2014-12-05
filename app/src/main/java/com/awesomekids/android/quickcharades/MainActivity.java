@@ -25,7 +25,7 @@ public class MainActivity extends Activity {
     }
 
     public void onFriendsButtonClick(View view) {
-        Intent getFriendsListIntent = new Intent(this,FriendsActivity.class);
+        Intent getFriendsListIntent = new Intent(this,GameResultActivity.class);
         final int result = 1; //what is this for
         startActivity(getFriendsListIntent);
     }

@@ -7,146 +7,121 @@
     android:background="@drawable/bg_setup"
     tools:context="com.awesomekids.android.quickcharades.GameSetupActivity">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_centerHorizontal="true"
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
         android:layout_alignParentTop="true"
-        android:weightSum="1"
-        android:id="@+id/linearLayout2">
+        android:id="@+id/space_1" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_diff_select"
+        android:layout_below="@+id/space_1"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/space_2"
+        android:layout_below="@+id/spinner_diff_select" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_length_select"
+        android:layout_below="@+id/space_2"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:id="@+id/space_3"
+        android:layout_below="@+id/spinner_length_select" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_mode_select"
+        android:layout_below="@+id/space_3"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/space_4"
+        android:layout_below="@+id/spinner_mode_select" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner_category_select"
+        android:layout_below="@+id/space_4"
+        android:layout_marginRight="50dp"
+        android:layout_marginLeft="50dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/space_5"
+        android:layout_below="@+id/spinner_category_select" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_a"
+        android:layout_below="@+id/space_5">
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="40dp" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:id="@+id/spinner_diff_select"
-                android:layout_weight="6"
-                android:layout_marginTop="10dp"/>
-
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="50dp" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-
-            <Spinner
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:id="@+id/spinner_length_select"
-                android:layout_weight="6" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="60dp" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
-
-            <Spinner
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:id="@+id/spinner_mode_select"
-                android:layout_weight="6"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="60dp" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" >
-
-            <Spinner
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:id="@+id/spinner_category_select"
-                android:layout_weight="6"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:focusable="true" />
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="30dp" />
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
+            android:layout_width="140dp"
             android:layout_height="wrap_content"
-            android:textAlignment="center">
+            android:id="@+id/space_a1"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="0dp" />
 
-                <Space
-                    android:layout_width="120dp"
-                    android:layout_height="match_parent" />
-
-                <TextView
-                    android:layout_width="77dp"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:id="@+id/text_number_of_questions_value"
-                    android:textSize="17sp"
-                    android:textAlignment="center"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp"
-                    android:textStyle="bold" />
-
-                <Space
-                    android:layout_width="25dp"
-                    android:layout_height="match_parent" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="0"
-                android:id="@+id/text_timer_value"
-                android:textSize="17sp"
-                android:textAlignment="center"
-                android:layout_marginLeft="42dp"
-                android:textStyle="bold"
-                android:layout_marginStart="42dp" />
-
-
-        </LinearLayout>
+        <TextView
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/text_number_of_questions_value"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/space_a1" />
 
         <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/space_a2"
+            android:layout_toRightOf="@+id/text_number_of_questions_value" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="121dp"
-            android:id="@+id/go_to_game_button"
-            android:onClick="onGoToPlayButtonClick"
-            android:visibility="visible"
-            android:longClickable="false"
-            android:background="@android:color/transparent"/>
+        <TextView
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/text_timer_value"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/space_a2" />
 
-    </LinearLayout>
+
+    </RelativeLayout>
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:id="@+id/space_6"
+        android:layout_below="@+id/layout_a" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/go_to_game_button"
+        android:onClick="onGoToPlayButtonClick"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/space_6"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>
