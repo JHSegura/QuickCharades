@@ -193,6 +193,7 @@ public class GameActivity extends Activity {
      */
     public void onTimeOut() {
         // perform any final actions here
+        hideAllLetter();
         mAnswerToast = Toast.makeText(this, getString(R.string.toast_time_out), Toast.LENGTH_SHORT);
         mAnswerToast.setGravity(Gravity.CENTER, 0, 0);
         mAnswerToast.show();
@@ -218,6 +219,16 @@ public class GameActivity extends Activity {
         }
     }
 
+    public void hideAllLetter() {
+        Button letterButtons;
+        for (Integer id : sLettersButtonId) {
+            letterButtons = (Button) findViewById(id);
+            letterButtons.setVisibility(View.INVISIBLE);
+        }
+//        for (int i = 0; i < sLettersButtonId.length; i++) {
+//            letterButtons = (Button) findViewById(sLettersButtonId)
+//        }
+    }
     public void letterClicked(View v){
         v.setClickable(false);
         v.setVisibility(v.INVISIBLE);
