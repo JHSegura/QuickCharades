@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.awesomekids.android.quickcharades.GameSeteupActivity">
+    android:background="@drawable/bg_setup"
+    tools:context="com.awesomekids.android.quickcharades.GameSetupActivity">
 
     <LinearLayout
         android:orientation="vertical"
@@ -12,129 +13,87 @@
         android:layout_height="fill_parent"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:id="@+id/linearLayout2">
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="40dp" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="@string/text_diff_select"
-                android:id="@+id/text_view_diff_select"
-                android:textAlignment="center"
-                android:textSize="13dp"
-                android:textStyle="bold"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp" />
-
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
                 android:id="@+id/spinner_diff_select"
-                android:layout_weight="6"></Spinner>
+                android:layout_weight="6"
+                android:layout_marginTop="10dp"/>
 
         </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="50dp" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
 
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="Length"
-                android:id="@+id/text_view_length_select"
-                android:textAlignment="center"
-                android:textSize="13dp"
-                android:textStyle="bold"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp" />
-
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
                 android:id="@+id/spinner_length_select"
                 android:layout_weight="6" />
         </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="60dp" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="@string/text_mode_select"
-                android:id="@+id/text_view_mode_select"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:textAlignment="center"
-                android:textSize="13dp"
-                android:textStyle="bold" />
-
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/spinner_mode_select"
                 android:layout_weight="6"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp" />
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp" />
         </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="60dp" />
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
 
-            <TextView
-                android:layout_width="80dp"
-                android:layout_height="match_parent"
-                android:text="@string/text_category_select"
-                android:id="@+id/text_view_category_select"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:textAlignment="center"
-                android:textSize="13dp"
-                android:textStyle="bold" />
-
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:id="@+id/spinner_category_select"
                 android:layout_weight="6"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginRight="40dp"
                 android:focusable="true" />
         </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="20dp" />
+            android:layout_height="5dp" />
 
         <LinearLayout
             android:orientation="vertical"
@@ -142,90 +101,26 @@
             android:layout_height="wrap_content"
             android:textAlignment="center">
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                <Space
+                    android:layout_width="150dp"
+                    android:layout_height="match_parent" />
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/text_number_of_questions_identifier"
-                    android:id="@+id/text_view_number_of_questions"
-                    android:layout_weight="1"
-                    android:textSize="13dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
+                    android:layout_width="77dp"
                     android:layout_height="wrap_content"
                     android:text="0"
                     android:id="@+id/text_number_of_questions_value"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:textSize="13dp"
+                    android:textSize="17sp"
                     android:textAlignment="center"
                     android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/text_time_per_question_identifier"
-                    android:id="@+id/text_view_timer"
-                    android:layout_weight="1"
-                    android:textSize="13dp"
                     android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp" />
+                    android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:id="@+id/text_timer_value"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:textSize="13dp"
-                    android:textAlignment="center"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp" />
-            </LinearLayout>
+                <Space
+                    android:layout_width="75dp"
+                    android:layout_height="match_parent" />
 
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Etc..."
-                    android:id="@+id/text_view_misc"
-                    android:layout_weight="1"
-                    android:textSize="13dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginLeft="15dp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="0"
-                    android:id="@+id/text_misc_value"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_horizontal|bottom"
-                    android:textSize="13dp"
-                    android:textAlignment="center"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginRight="15dp" />
-            </LinearLayout>
         </LinearLayout>
 
         <Space
@@ -233,13 +128,29 @@
             android:layout_height="20dp" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="121dp"
             android:text="@string/Play"
             android:id="@+id/go_to_game_button"
-            android:layout_gravity="center_horizontal|bottom"
-            android:onClick="onGoToPlayButtonClick"/>
+            android:onClick="onGoToPlayButtonClick"
+            android:visibility="invisible" />
 
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:id="@+id/text_timer_value"
+        android:layout_gravity="center_horizontal|bottom"
+        android:textSize="17sp"
+        android:textAlignment="center"
+        android:layout_marginLeft="255dp"
+        android:textStyle="bold"
+        android:layout_alignBottom="@+id/linearLayout2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="255dp"
+        android:layout_marginBottom="114dp" />
 
 </RelativeLayout>

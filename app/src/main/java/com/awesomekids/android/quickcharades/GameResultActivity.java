@@ -37,25 +37,26 @@ public class GameResultActivity extends ActionBarActivity {
         Length length = Length.SHORT;
         QCategory cat = QCategory.HEROES;
         //Maybe make these instance vars
-        //Perhaps add length difficulty, category,
-        TextView scoreView = (TextView) findViewById(R.id.text_score_value);
-        TextView timeView = (TextView) findViewById(R.id.text_total_time_value);
-        TextView qView = (TextView) findViewById(R.id.text_question_value);
-        TextView streakView = (TextView) findViewById(R.id.text_streak_value);
-        scoreView.setText(""+score);
-        timeView.setText(""+time);
-        qView.setText(qAnswered+"/"+qTotal);
-        streakView.setText(""+streak);
-        updatePlayerInfo(score,time,qAnswered,qTotal,streak);
-        diffView = (TextView) findViewById(R.id.text_diff_value);
-        lengthView = (TextView) findViewById(R.id.text_length_value);
-        catView = (TextView) findViewById(R.id.text_category_value);
-        modeView = (TextView) findViewById(R.id.text_mode_value);
+        TextView scoreView = (TextView) findViewById(R.id.text_view_score);
+        TextView timeView = (TextView) findViewById(R.id.text_view_time_elapsed);
+        TextView qView = (TextView) findViewById(R.id.text_view_question);
+        TextView streakView = (TextView) findViewById(R.id.text_view_streak);
 
-        diffView.setText(diff.getValue());
-        lengthView.setText(length.getValue());
-        catView.setText(cat.getValue());
-        modeView.setText(mode.getValue());
+        scoreView.setText("Score: "+score);
+        timeView.setText("Time: "+time);
+        qView.setText("Correct Questions: "+qAnswered+"/"+qTotal);
+        streakView.setText("Max Streak: "+streak);
+        updatePlayerInfo(score,time,qAnswered,qTotal,streak);
+
+        diffView = (TextView) findViewById(R.id.text_view_diff);
+        lengthView = (TextView) findViewById(R.id.text_view_length);
+        catView = (TextView) findViewById(R.id.text_view_category);
+        modeView = (TextView) findViewById(R.id.text_view_mode);
+
+        diffView.setText("Difficulty: "+diff.getValue());
+        lengthView.setText("Length: "+length.getValue());
+        catView.setText("Category: "+cat.getValue());
+        modeView.setText("Game Mode:"+mode.getValue());
         playAgainButton = (Button) findViewById(R.id.play_again_button);
         goMainMenuButton = (Button) findViewById(R.id.from_result_to_menu_button);
     }

@@ -19,7 +19,7 @@ public class MainActivity extends Activity {
 
         mPlayButton = (Button) findViewById(R.id.play_button);
         mSettingButton = (Button) findViewById(R.id.setting_button);
-        mFriendsButton = (Button) findViewById(R.id.blank_text_2);
+        mFriendsButton = (Button) findViewById(R.id.friends_button);
         mLeaderBoardsButton = (Button) findViewById(R.id.leaderboards_button);
 
     }

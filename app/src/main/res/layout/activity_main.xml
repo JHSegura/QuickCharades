@@ -22,27 +22,17 @@
         <Space
             android:layout_width="24dp"
             android:layout_height="fill_parent"
-            android:layout_above="@+id/play_button"
-            android:layout_alignRight="@+id/play_button"
-            android:layout_alignEnd="@+id/play_button"
             android:id="@+id/space_1" />
 
         <Button
             android:layout_width="53dp"
             android:layout_height="fill_parent"
             android:id="@+id/howto_button"
-            android:background="@android:color/transparent"
-            android:layout_toStartOf="@+id/setting_button"
-            android:layout_alignBottom="@+id/blank_text_2"
-            android:layout_alignRight="@+id/play_button"
-            android:layout_alignEnd="@+id/play_button" />
+            android:background="@android:color/transparent"/>
 
         <Space
             android:layout_width="46dp"
             android:layout_height="fill_parent"
-            android:layout_above="@+id/play_button"
-            android:layout_alignRight="@+id/play_button"
-            android:layout_alignEnd="@+id/play_button"
             android:id="@+id/space_2" />
 
         <Button
@@ -51,18 +41,11 @@
             android:layout_width="53dp"
             android:layout_height="fill_parent"
             android:padding="24dp"
-            android:background="@android:color/transparent"
-            android:layout_alignBaseline="@+id/howto_button"
-            android:layout_alignBottom="@+id/howto_button"
-            android:layout_alignRight="@+id/blank_text_2"
-            android:layout_alignEnd="@+id/blank_text_2" />
+            android:background="@android:color/transparent" />
 
         <Space
             android:layout_width="35dp"
             android:layout_height="fill_parent"
-            android:layout_above="@+id/play_button"
-            android:layout_alignRight="@+id/play_button"
-            android:layout_alignEnd="@+id/play_button"
             android:id="@+id/space_3" />
 
         <Button
@@ -71,17 +54,11 @@
             android:layout_width="53dp"
             android:layout_height="fill_parent"
             android:padding="24dp"
-            android:background="@android:color/transparent"
-            android:layout_below="@+id/play_button"
-            android:layout_toRightOf="@+id/setting_button"
-            android:layout_toEndOf="@+id/setting_button" />
+            android:background="@android:color/transparent"/>
 
         <Space
             android:layout_width="33dp"
             android:layout_height="fill_parent"
-            android:layout_above="@+id/play_button"
-            android:layout_alignRight="@+id/play_button"
-            android:layout_alignEnd="@+id/play_button"
             android:id="@+id/space_4" />
 
         <Button
@@ -91,10 +68,7 @@
             android:layout_height="fill_parent"
             android:padding="24dp"
             android:background="@android:color/transparent"
-            android:layout_toStartOf="@+id/leaderboards_button"
-            android:layout_marginEnd="63dp"
-            android:layout_alignParentRight="false"
-            android:layout_alignParentEnd="true" />
+            android:layout_marginEnd="63dp"/>
 
 
     </LinearLayout>
@@ -107,12 +81,12 @@
         android:padding="30dp"
         android:background="@android:color/transparent"
         android:text="@string/Play"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:layout_marginTop="112dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/linearLayout"
-        android:layout_alignEnd="@+id/linearLayout" />
+        android:layout_above="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="40dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -123,14 +97,5 @@
         android:singleLine="true"
         android:textColor="@color/accent_material_dark"
         android:text="@string/text_view_high_score" />
-
-    <SeekBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/seekBar"
-        android:layout_above="@+id/linearLayout"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="44dp" />
 
 </RelativeLayout>
