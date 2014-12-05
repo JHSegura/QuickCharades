@@ -39,5 +39,6 @@
     <string name="toast_correct_notification">Answer is Correct</string>
     <string name="toast_incorrect_notification">Answer is Wrong</string>
     <string name="title_activity_game_result">Results</string>
+    <string name="toast_time_out">Time out !!!</string>
 
 </resources>

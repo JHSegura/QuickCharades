@@ -38,9 +38,10 @@ public class GameActivity extends Activity {
     private Button mSkipButton;
 
 
-    private final int RUNTIME = 45000; // 45 seconds
+    private final int RUNTIME = 15000; // 15 seconds
     protected boolean mbActive;
     private ProgressBar mTimerBar;
+    private Thread mTimerThread;
 
     static private Player mPlayer; // implement Singletons
 
@@ -126,62 +127,57 @@ public class GameActivity extends Activity {
             mStreakView.setText("" + mPlayer.currentStreak);
         }
 
-        // ISSUE : This can only be run once
         mTimerBar = (ProgressBar) findViewById(R.id.barTimer);
-        final Thread timerThread = new Thread() {
+
+        loadAllQuestions(); // this will allocate and get resources for the game
+        // new question does not automatically generate random letters
+        // TODO : Use information from category to generate different Questions into mGameQuestions
+        setupAllLettersButton();
+
+
+        startCountSession(); // start the first countdownSession
+
+    } // end of onCreate
+
+
+    /**
+     * Very inefficient multithreading, no time to fix
+     * TODO : Implement Thread countDownThread @Override: onStop()
+     * @Ovveride onStop() { super.onStop(); if (countDownThread != null) { countDownThread.interrupt(); } }
+     */
+    public void startCountSession() {
+        final Handler mProgressHandler;
+        mProgressHandler = new Handler();
+
+        mTimerThread = new Thread() {
             @Override
             public void run() {
-                mbActive = true;
+                int waited = 0;
                 try {
-                    int waited = 0;
-                    while (mbActive && (waited < RUNTIME)) {
-                        sleep(200); // the progress bar update every 200 ms
-                        if (mbActive) {
-                            waited += 200;
-                            updateProgress(waited);
-                        }
+                    while ((waited < RUNTIME)) {
+                        sleep(1000); // the progress bar update every 1000 ms
+                        waited += 1000;
+                        updateProgress(waited);
                     }
+
+                    // need Multithreading to understand this,
+                    // basicly, inside this thread, we can't change whatever happens in MainActivity
+                    // so, we need Handler
+                    mProgressHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            onTimeOut(); // time out
+                        }
+                    });
                 } catch (InterruptedException e) {
                     //do nothing
                 } finally {
-                    onContinue();
+                    //do nothing
                 }
             }
         };
-        // TODO : Fix progress bar
-//        timerThread.start(); // Cause crash and very slow
-
-
-        // TODO : Use information from category to generate different Questions into mGameQuestions
-        loadAllQuestions(); // this will allocate and get resources for the game
-                            // new question does not automatically generate random letters
-        setupAllLettersButton();
-    } // end of onCreate
-
-    /**
-     * Function to run and show the countdown timer progress bar
-     */
-//    private void runTimer() {
-
-//        mbActive = true;
-//        final Thread t = new Thread() {
-//            @Override
-//            public void run() {
-//                int jumpTime = 0;
-//                while (jumpTime < totalProgressTime) {
-//                    try {
-//                        sleep(200);
-//                        jumpTime += 5;
-//                        mTimerBar.setProgress(jumpTime);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//        };
-//        t.start();
-//    }
-
+        mTimerThread.start();
+    }
 
     public void updateProgress(final int timePassed) {
         if(null != mTimerBar) {
@@ -191,9 +187,25 @@ public class GameActivity extends Activity {
         }
     }
 
-    public void onContinue() {
+
+    /**
+     * This function will run when the progress bar is ended
+     */
+    public void onTimeOut() {
         // perform any final actions here
-        goToNextQuestion();
+        mAnswerToast = Toast.makeText(this, getString(R.string.toast_time_out), Toast.LENGTH_SHORT);
+        mAnswerToast.setGravity(Gravity.CENTER, 0, 0);
+        mAnswerToast.show();
+
+        // a copy from checkAnswer, TODO : find a way to integrate the two
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Do something after 1.5s = 1500ms
+                goToNextQuestion();
+            }
+        }, 1500);
     }
 
     /**
@@ -310,12 +322,20 @@ public class GameActivity extends Activity {
     }
 
     public void goToNextQuestion() {
-//        mTimerBar.setProgress(0);
-        // TODO : Fix the crashing bug here if it is set to 0
+
         mCurrentQuestion = ++mCurrentQuestion % mMaxQuestion;
         mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
         mAnswerTextView.setText("");
         setupAllLettersButton();
+        mTimerBar.setProgress(0);
+
+        // this will clean previous thread if it hasnt ended yet
+        if (null != mTimerThread) {
+            mTimerThread.interrupt();
+            mTimerThread = null;
+        }
+
+        startCountSession(); // this starts the next n thread, how does android manage memory?
     }
 
 }
