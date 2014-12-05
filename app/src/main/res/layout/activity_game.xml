@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:text="@string/game_text_clear"
             android:background="#ffff201b"
-            />
+            android:layout_marginLeft="0dp" />
 
         <TextView
             android:id="@+id/game_answer_textview"
