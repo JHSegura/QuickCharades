@@ -19,17 +19,24 @@ public class GameResultActivity extends ActionBarActivity {
     private TextView diffView;
     private TextView lengthView;
     private TextView catView;
+
+    private int score, time, qAnswered, qTotal, streak;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_result);
+
         //get info from game activity
-        //load them into variables here:
-        int score = 155555;
-        double time = 222.24;
-        int qAnswered = 10; //get rid of these initial values when we get the info
-        int qTotal = 5;
-        int streak = 777;
+        time = getIntent().getIntExtra(GameActivity.KEY_TOTALTIME, 0); // by default its zero
+        qTotal = getIntent().getIntExtra(GameActivity.KEY_TOTALQUESTION, 0); // by default its zero
+
+        // get info from player
+        try {
+            loadPlayerInfo();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         Difficulty diff = Difficulty.EASY;
         Mode mode = Mode.SINGLE;
@@ -45,7 +52,6 @@ public class GameResultActivity extends ActionBarActivity {
         timeView.setText("Total Time: "+time);
         qView.setText("Correct Questions: "+qAnswered+"/"+qTotal);
         streakView.setText("Max Streak: "+streak);
-        updatePlayerInfo(score,time,qAnswered,qTotal,streak);
 
         diffView = (TextView) findViewById(R.id.text_view_diff);
         lengthView = (TextView) findViewById(R.id.text_view_length);
@@ -67,8 +73,11 @@ public class GameResultActivity extends ActionBarActivity {
         Intent goMainMenuIntent = new Intent(this,MainActivity.class);
         startActivity(goMainMenuIntent);
     }
-    public void updatePlayerInfo(int score, double time, int answered, int total, int streak){
 
+
+    public void loadPlayerInfo() {
+        score = GameActivity.mPlayer.currentScore;
+        qAnswered = GameActivity.mPlayer.currentQanswered;
+        streak = GameActivity.mPlayer.currentStreak;
     }
-
 }

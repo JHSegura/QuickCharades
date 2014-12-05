@@ -1,16 +1,21 @@
 package com.awesomekids.android.quickcharades;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 
 /**
  * Created by Joseph Park on 11/29/2014.
  */
-public class Player {
+public class Player implements Parcelable {
     private int playerID;
     public String playerName;
     private Stat playerStats;
     public int currentScore;
     public int currentStreak;
+    public int currentQanswered;
+
     private Status status;
     private ArrayList<Player> friendsList; //How are we going to do this?
     private int rank;
@@ -22,6 +27,7 @@ public class Player {
         playerStats = new Stat();
         currentScore = 0;
         currentStreak = 0;
+        currentQanswered = 0;
         status = Status.VOID;
         friendsList = new ArrayList<Player>();
         rank = 0;
@@ -86,4 +92,16 @@ public class Player {
     public void resetScore(){currentScore = 0;}
     public void resetStreak(){currentStreak = 0;}
     public void resetStats(){playerStats.setStats(new Stat());}
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+//        dest.writeInt();
+        // TODO : Implement Parcelable for Player
+        // http://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents
+    }
 }

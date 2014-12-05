@@ -26,6 +26,11 @@ import java.util.ArrayList;
  */
 public class GameActivity extends Activity {
 
+    public static final String KEY_ACCOUNT = "account"; // will use later
+    public static final String KEY_TOTALTIME = "total_time";
+    public static final String KEY_TOTALQUESTION = "total_question";
+
+    private static final int BAR_REFRESH_RATE = 1000; // every 1 sec
 
     private ImageView mImagePortrait;
 
@@ -43,7 +48,7 @@ public class GameActivity extends Activity {
     private ProgressBar mTimerBar;
     private Thread mTimerThread;
 
-    static private Player mPlayer; // implement Singletons
+    static public Player mPlayer; // implement Singletons
 
     private Toast mAnswerToast;
     private int mCurrentQuestion;
@@ -58,9 +63,8 @@ public class GameActivity extends Activity {
             "AANG",
             "MARIO"
     };
-
+    private int mTimeElapsed;
     private ArrayList<Question> mGameQuestions;
-
     static private Integer[] sLettersButtonId = {
             R.id.button, R.id.button2, R.id.button3, R.id.button4, R.id.button5, R.id.button6, R.id.button7,
             R.id.button8, R.id.button9, R.id.button10, R.id.button11, R.id.button12, R.id.button13, R.id.button14
@@ -71,23 +75,14 @@ public class GameActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-
-
         // To pass informatin from main screen
         Intent activityThatCalled = getIntent();
 //        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
 
-
         mCurrentQuestion = 0;
+        mTimeElapsed = 0;
         mMaxQuestion = mImageIds.length;
         mImagePortrait = (ImageView) findViewById (R.id.game_imageView);
-        mImagePortrait.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToNextQuestion();
-            }
-        });
-
         mAnswerTextView = (TextView) findViewById(R.id.game_answer_textview);
         mScoreTextView = (TextView) findViewById(R.id.game_score_textview);
         mStreakView = (TextView) findViewById(R.id.game_streak_number);
@@ -114,7 +109,6 @@ public class GameActivity extends Activity {
         mSkipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mPlayer.currentScore -= 20;
                 goToNextQuestion();
             }
         });
@@ -155,8 +149,9 @@ public class GameActivity extends Activity {
                 int waited = 0;
                 try {
                     while ((waited < RUNTIME)) {
-                        sleep(1000); // the progress bar update every 1000 ms
-                        waited += 1000;
+                        sleep(GameActivity.BAR_REFRESH_RATE); // the progress bar update every 1000 ms
+                        waited += GameActivity.BAR_REFRESH_RATE;
+                        mTimeElapsed += GameActivity.BAR_REFRESH_RATE/1000; // add 1 seconds
                         updateProgress(waited);
                     }
 
@@ -203,7 +198,6 @@ public class GameActivity extends Activity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                // Do something after 1.5s = 1500ms
                 goToNextQuestion();
             }
         }, 1500);
@@ -225,10 +219,8 @@ public class GameActivity extends Activity {
             letterButtons = (Button) findViewById(id);
             letterButtons.setVisibility(View.INVISIBLE);
         }
-//        for (int i = 0; i < sLettersButtonId.length; i++) {
-//            letterButtons = (Button) findViewById(sLettersButtonId)
-//        }
     }
+
     public void letterClicked(View v){
         v.setClickable(false);
         v.setVisibility(v.INVISIBLE);
@@ -236,9 +228,7 @@ public class GameActivity extends Activity {
         // going to have to append from somewhere else besides extracting letters from layout
         Button b = (Button)v;
         String buttonLetter = b.getText().toString();
-
         mAnswerTextView.append(buttonLetter);
-        //text.setText(buttonLetter);
     }
 
     public void onGameQuitButtonClick(View view) {
@@ -269,7 +259,6 @@ public class GameActivity extends Activity {
         ArrayList<Character> randomLetters = mGameQuestions
                 .get(mCurrentQuestion)
                 .getRandomizedLetters(); // each time this is called, it will always be random
-
 //        Log.d("Debugging actual answer", mGameQuestions.get(mCurrentQuestion).getAnswer());
 //        Log.d("Debugging random letters(count manually) ", randomLetters.toString());
 //        Log.d("Length of sLetterButtonId", "" + sLettersButtonId.length);
@@ -307,11 +296,11 @@ public class GameActivity extends Activity {
         processScore(isCorrect); // update score, streak, and display
 
         if (isCorrect) {
+            mPlayer.currentQanswered++;
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    // Do something after 1.5s = 1500ms
                     goToNextQuestion();
                 }
             }, 1500);
@@ -323,6 +312,9 @@ public class GameActivity extends Activity {
         if(trueFalse) {
             mPlayer.currentScore += 100; // for now, use 100
             mPlayer.currentStreak += 1;
+            // update player's maxStreak
+            if(mPlayer.currentStreak > mPlayer.getStats().maxStreak)
+                mPlayer.getStats().maxStreak = mPlayer.currentStreak;
         }
         else {
             mPlayer.currentScore -= 20; // temporary
@@ -332,21 +324,41 @@ public class GameActivity extends Activity {
         mStreakView.setText("" + mPlayer.currentStreak);
     }
 
+    /**
+     * This call will go to next question and terminating timerThread
+     * if there's no more question, go to ResultActivity
+     */
     public void goToNextQuestion() {
 
         mCurrentQuestion = ++mCurrentQuestion % mMaxQuestion;
-        mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
-        mAnswerTextView.setText("");
-        setupAllLettersButton();
-        mTimerBar.setProgress(0);
+        // check if the question reaches mMaximum, or, return to 0
+        // but since this function can only be called after first question, we only check for 0
+        // if so, go to ResultActivity
 
+        mTimerBar.setProgress(0);
         // this will clean previous thread if it hasnt ended yet
         if (null != mTimerThread) {
             mTimerThread.interrupt();
             mTimerThread = null;
         }
 
-        startCountSession(); // this starts the next n thread, how does android manage memory?
+        if(mCurrentQuestion == 0) {
+            endGame();
+        } else {
+            mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
+            mAnswerTextView.setText("");
+            setupAllLettersButton();
+            startCountSession(); // this starts the next n thread, how does android manage memory?
+        }
+
     }
 
+    public void endGame() {
+        Intent i = new Intent(GameActivity.this, GameResultActivity.class);
+        i.putExtra(GameActivity.KEY_TOTALTIME, mTimeElapsed);
+        i.putExtra(GameActivity.KEY_TOTALQUESTION, mMaxQuestion);
+
+        // use intent only for temporary info
+        startActivity(i);
+    }
 }
