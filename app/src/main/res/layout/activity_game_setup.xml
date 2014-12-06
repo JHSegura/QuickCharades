@@ -85,7 +85,7 @@
         <TextView
             android:layout_width="77dp"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@string/zero"
             android:id="@+id/text_number_of_questions_value"
             android:textSize="17sp"
             android:textStyle="bold"
@@ -100,7 +100,7 @@
         <TextView
             android:layout_width="77dp"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@string/zero"
             android:id="@+id/text_timer_value"
             android:textSize="17sp"
             android:textStyle="bold"

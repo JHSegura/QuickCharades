@@ -77,8 +77,11 @@ public class GameActivity extends Activity {
 
         // To pass informatin from main screen
         Intent activityThatCalled = getIntent();
-//        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
+        //Get info from gamesetup about diff,length,mode,and category
+        //Get appropriate questions based on the above
+        //Dont worry about mode
 
+//        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
         mCurrentQuestion = 0;
         mTimeElapsed = 0;
         mMaxQuestion = mImageIds.length;
@@ -357,7 +360,7 @@ public class GameActivity extends Activity {
         Intent i = new Intent(GameActivity.this, GameResultActivity.class);
         i.putExtra(GameActivity.KEY_TOTALTIME, mTimeElapsed);
         i.putExtra(GameActivity.KEY_TOTALQUESTION, mMaxQuestion);
-
+        //Get score and streak as well
         // use intent only for temporary info
         startActivity(i);
     }

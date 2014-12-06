@@ -47,7 +47,7 @@
             android:layout_width="72dp"
             android:layout_height="59dp"
             android:id="@+id/game_skip_button"
-            android:text="Skip"
+            android:text="@string/skip_button"
             android:background="@drawable/rounded_btn"
             android:textColor="#ff24ff22"
             android:layout_marginRight="21dp"
@@ -59,7 +59,7 @@
         <TextView
             android:layout_width="73dp"
             android:layout_height="35dp"
-            android:text="Streak"
+            android:text="@string/streak_view"
             android:textColor="#fff6f9ff"
             android:textAlignment="center"
             android:textSize="18sp"
@@ -73,7 +73,7 @@
             android:layout_width="49dp"
             android:layout_height="64dp"
             android:id="@+id/game_streak_number"
-            android:text="0"
+            android:text="@string/zero"
             android:textSize="65sp"
             android:textColor="#ffffffff"
             android:layout_marginLeft="24dp"
@@ -96,7 +96,7 @@
             android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text="Score"
+            android:text="@string/score_view"
             android:id="@+id/textView"
             android:textSize="19sp"
             android:layout_above="@+id/game_score_textview"
@@ -106,7 +106,7 @@
         <TextView
             android:layout_width="69dp"
             android:layout_height="wrap_content"
-            android:text="0"
+            android:text="@string/zero"
             android:id="@+id/game_score_textview"
 
             android:textSize="20sp"
@@ -134,8 +134,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/game_text_clear"
-            android:background="#ffff201b"
-            android:layout_marginLeft="0dp" />
+            android:background="#ffff201b" />
 
         <TextView
             android:id="@+id/game_answer_textview"
@@ -143,7 +142,7 @@
             android:layout_height="match_parent"
             android:textAppearance="?android:attr/textAppearanceLarge"
 
-            android:text=""
+            android:text="@string/blank"
             android:background="@android:color/holo_orange_light"
             android:gravity="center" />
 
@@ -172,98 +171,98 @@
             android:id="@+id/button"
             android:layout_gravity="bottom"
             android:onClick="letterClicked"
-            android:text="A" />
+            android:text="@string/default_letter"/>
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button2"
             android:onClick="letterClicked"
-            android:text="A" />
+            android:text="@string/default_letter"/>
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button3"
             android:onClick="letterClicked"
-            android:text="A" />
+            android:text="@string/default_letter"/>
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button4"
             android:onClick="letterClicked"
-            android:text="A" />
+            android:text="@string/default_letter"/>
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button5"
             android:onClick="letterClicked"
-            android:text="A" />
+            android:text="@string/default_letter"/>
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button6"
             android:onClick="letterClicked"
-            android:text="A" />
+            android:text="@string/default_letter"/>
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button7"
             android:onClick="letterClicked"
-            android:text="A" />
+            android:text="@string/default_letter"/>
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button8"
             android:onClick="letterClicked"
-            android:text="A" />
+            android:text="@string/default_letter"/>
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button9"
             android:onClick="letterClicked"
-            android:text="A" />
+            android:text="@string/default_letter"/>
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button10"
             android:onClick="letterClicked"
-            android:text="A" />
+            android:text="@string/default_letter"/>
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button11"
             android:onClick="letterClicked"
-            android:text="A" />
+            android:text="@string/default_letter"/>
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button12"
             android:onClick="letterClicked"
-            android:text="A" />
+            android:text="@string/default_letter"/>
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button13"
             android:onClick="letterClicked"
-            android:text="A" />
+            android:text="@string/default_letter"/>
 
         <Button
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:id="@+id/button14"
             android:onClick="letterClicked"
-            android:text="A"/>
+            android:text="@string/default_letter"/>
 
     </GridLayout>
 

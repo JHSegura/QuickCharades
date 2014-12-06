@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -12,226 +12,173 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="40dp"/>
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:id="@+id/top_space" />
 
-    <LinearLayout
+    <RelativeLayout
         android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/top_space"
+        android:id="@+id/circle_group">
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="350dp">
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:id="@+id/first_circle_group">
 
-            <LinearLayout
-                android:orientation="vertical"
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/first_circle_space"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true" />
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="-30dp">
+                android:text="@string/difficulty_text"
+                android:id="@+id/text_view_diff"
+                android:layout_gravity="left"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:textIsSelectable="true"
+                android:textSize="17sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/first_circle_space"
+                android:layout_alignParentEnd="true"/>
 
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="25dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Length:"
+                android:id="@+id/text_view_length"
+                android:layout_gravity="left"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/text_view_diff"
+                android:layout_alignParentEnd="true" />
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Category:"
+                android:id="@+id/text_view_category"
+                android:layout_gravity="left"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/text_view_length"
+                android:layout_alignParentEnd="true" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="Difficulty:"
-                        android:id="@+id/text_view_diff"
-                        android:layout_gravity="left"
-                        android:layout_weight="7"
-                        android:layout_marginLeft="35dp"
-                        android:layout_marginBottom="10dp"
-                        android:textStyle="bold"
-                        android:textIsSelectable="true"
-                        android:textSize="17sp" />
+        </RelativeLayout>
 
-                </LinearLayout>
+        <RelativeLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:id="@+id/second_circle_group"
+            android:layout_toRightOf="@+id/first_circle_group">
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:id="@+id/second_circle_space"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="Length:"
-                        android:id="@+id/text_view_length"
-                        android:layout_gravity="left"
-                        android:layout_weight="7"
-                        android:layout_marginLeft="35dp"
-                        android:layout_marginBottom="10dp"
-                        android:textStyle="bold"
-                        android:textSize="17sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Score:"
+                android:id="@+id/text_view_score"
+                android:layout_gravity="left"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/second_circle_space"
+                android:layout_alignParentEnd="true" />
 
-                </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Highest Streak:"
+                android:id="@+id/text_view_streak"
+                android:layout_gravity="left"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/text_view_score"
+                android:layout_alignParentEnd="true" />
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Correct Questions:"
+                android:id="@+id/text_view_question"
+                android:layout_gravity="left"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/text_view_streak"
+                android:layout_alignParentEnd="true" />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="Category:"
-                        android:id="@+id/text_view_category"
-                        android:layout_gravity="left"
-                        android:layout_weight="7"
-                        android:layout_marginLeft="35dp"
-                        android:layout_marginBottom="10dp"
-                        android:textStyle="bold"
-                        android:textSize="17sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Total Time:"
+                android:id="@+id/text_view_time_elapsed"
+                android:layout_gravity="left"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/text_view_question"
+                android:layout_alignParentEnd="true" />
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:layout_marginRight="-10dp"
-                android:layout_marginLeft="0dp">
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="140dp" />
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="Score:"
-                        android:id="@+id/text_view_score"
-                        android:layout_gravity="left"
-                        android:layout_weight="4"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginBottom="10dp"
-                        android:textStyle="bold"
-                        android:textSize="17sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="Highest Streak:"
-                        android:id="@+id/text_view_streak"
-                        android:layout_gravity="left"
-                        android:layout_weight="2.6"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginBottom="10dp"
-                        android:textStyle="bold"
-                        android:textSize="17sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="Correct Questions:"
-                        android:id="@+id/text_view_question"
-                        android:layout_gravity="left"
-                        android:layout_weight="2.6"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginBottom="10dp"
-                        android:textStyle="bold"
-                        android:textSize="17sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" >
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:text="Total Time:"
-                        android:id="@+id/text_view_time_elapsed"
-                        android:layout_gravity="left"
-                        android:layout_marginLeft="20dp"
-                        android:focusableInTouchMode="true"
-                        android:layout_marginBottom="10dp"
-                        android:textStyle="bold"
-                        android:textSize="17sp"
-                        android:layout_weight="7" />
-
-                </LinearLayout>
-
-
-            </LinearLayout>
-        </LinearLayout>
+        </RelativeLayout>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="240dp"
-            android:layout_weight="3"
-            android:id="@+id/end" />
+            android:layout_height="100dp"
+            android:id="@+id/end"
+            android:layout_below="@+id/second_circle_group" />
 
-        <RelativeLayout
-            android:orientation="horizontal"
-            android:layout_width="fill_parent"
-            android:layout_height="94dp"
-            android:gravity="bottom"
-            android:weightSum="1">
+    </RelativeLayout>
 
-            <Button
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/from_result_to_menu_button"
-                android:onClick="onGoMainMenuButtonClick"
-                android:visibility="visible"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="false"
-                android:background="@android:color/transparent"
-                android:layout_alignParentBottom="true" />
+    <Button
+        android:layout_width="1600dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/play_again_button"
+        android:onClick="onPlayAgainButtonClick"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/from_result_to_menu_button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="@android:color/transparent"
+        android:layout_below="@+id/circle_group" />
 
-            <Button
-                android:layout_width="165dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/play_again_button"
-                android:onClick="onPlayAgainButtonClick"
-                android:visibility="visible"
-                android:layout_alignParentBottom="true"
-                android:layout_toLeftOf="@+id/from_result_to_menu_button"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:background="@android:color/transparent"
-                android:layout_alignParentTop="true" />
-        </RelativeLayout>
+    <Button
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/from_result_to_menu_button"
+        android:onClick="onGoMainMenuButtonClick"
+        android:layout_alignParentRight="true"
+        android:background="@android:color/transparent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/circle_group" />
 
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>

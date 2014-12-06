@@ -24,6 +24,18 @@ public class GameSetupActivity extends ActionBarActivity {
     private Spinner modeSpinner;
     private Spinner categorySpinner;
     private Spinner lengthSpinner;
+
+    public static final String KEY_DIFF = "difficulty";
+    public static final String KEY_LEN = "length";
+    public static final String KEY_MODE = "mode";
+    public static final String KEY_CAT = "category";
+
+    private static final int T_EASY = 45;
+    private static final int T_NORM = 30;
+    private static final int T_HARD = 15;
+    private static final int Q_SHORT = 15;
+    private static final int Q_MED = 25;
+    private static final int Q_LONG = 40;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,11 +70,11 @@ public class GameSetupActivity extends ActionBarActivity {
     public void createCategorySpinner(){
         categorySpinner = (Spinner) findViewById(R.id.spinner_category_select);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,new ArrayList<String>());
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,new ArrayList<String>());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
         for(QCategory C : QCategory.values()) {
-            if(C.getValue() != "NONE"){
+            if(!C.getValue().equals(QCategory.VOID.getValue())){
                 adapter.add(C.getValue());
                 adapter.notifyDataSetChanged();
                 categorySpinner.setSelection(adapter.getPosition(C.getValue()));
@@ -81,45 +93,43 @@ public class GameSetupActivity extends ActionBarActivity {
 
     public void onGoToPlayButtonClick(View view){
         Intent goPlayIntent = new Intent(this,GameActivity.class); //Set this back to gameactivity
-        String[] gameSettings = new String[3]; //Maybe better if we store as strings instead
-        gameSettings[0] = diffSpinner.getSelectedItem().toString() == "Easy" ? Difficulty.EASY.getValue() :
-                (diffSpinner.getSelectedItem().toString() == "Normal" ?
-                        Difficulty.MEDIUM.getValue() : Difficulty.HARD.getValue());
-        gameSettings[1] = modeSpinner.getSelectedItem().toString() == "Play Alone" ? Mode.SINGLE.getValue() :
-                (modeSpinner.getSelectedItem().toString() == "Play With A Friend" ?
+                String hold = diffSpinner.getSelectedItem().toString().equals("Easy") ? Difficulty.EASY.getValue() :
+                (diffSpinner.getSelectedItem().toString().equals("Normal") ?
+                Difficulty.MEDIUM.getValue() : Difficulty.HARD.getValue());
+        goPlayIntent.putExtra(KEY_DIFF,hold);
+
+        hold = modeSpinner.getSelectedItem().toString().equals("Play Alone") ? Mode.SINGLE.getValue() :
+                (modeSpinner.getSelectedItem().toString().equals("Play With A Friend") ?
                         Mode.FRIEND.getValue() : Mode.RANDOM.getValue());
-        gameSettings[2] = modeSpinner.getSelectedItem().toString() == "Short" ? Length.SHORT.getValue() :
-                (modeSpinner.getSelectedItem().toString() == "Medium" ?
+        goPlayIntent.putExtra(KEY_MODE,hold);
+
+        hold = lengthSpinner.getSelectedItem().toString().equals("Short") ? Length.SHORT.getValue() :
+                (lengthSpinner.getSelectedItem().toString().equals("Medium") ?
                         Length.MEDIUM.getValue() : Length.LONG.getValue());
-//        numQText.setText(diffSpinner.getSelectedItem().toString()); //Just used to test if the above works
-//        numTText.setText(modeSpinner.getSelectedItem().toString());
-        goPlayIntent.putExtra(categorySpinner.getSelectedItem().toString(),gameSettings); //Pass along the game mode/difficulty/category info to gameactivity so that it can begin an appropriate game
+        goPlayIntent.putExtra(KEY_LEN,hold);
+        goPlayIntent.putExtra(KEY_CAT,categorySpinner.getSelectedItem().toString());
+
         startActivity(goPlayIntent);
     }
     public class DiffSpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
-
-        public void onItemSelected(AdapterView<?> parent, View view,
-                                   int pos, long id) {
-            // An item was selected. You can retrieve the selected item using
-            // parent.getItemAtPosition(pos)
-            //Set difficulty here
+        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             String diff = parent.getItemAtPosition(pos).toString();
-
-            if(diff.compareTo("Easy")==0){ //Can always change later
-                numTText.setText("45s");
-            } //easy
-            else if(diff.compareTo("Normal")==0){
-                numTText.setText("30s");
-            }//set to normal
-            else if(diff.compareTo("Hard")==0){
-                numTText.setText("15s");
-            }//hard
-            else{
-
+            switch(diff){
+               case "Easy":{
+                   numTText.setText(""+T_EASY);
+                   break;
+               }
+               case "Normal":{
+                   numTText.setText(""+T_NORM);
+                   break;
+               }
+               case "Hard":{
+                   numTText.setText(""+T_HARD);
+                   break;
+               }
+               default : break;
             }
-                //error
         }
-
         public void onNothingSelected(AdapterView<?> parent) {
             Toast.makeText(getBaseContext(),"Difficulty not selected",Toast.LENGTH_SHORT).show();
         }
@@ -129,10 +139,6 @@ public class GameSetupActivity extends ActionBarActivity {
 
         public void onItemSelected(AdapterView<?> parent, View view,
                                    int pos, long id) {
-            // An item was selected. You can retrieve the selected item using
-            // parent.getItemAtPosition(pos)
-            //Set game mode here
-
         }
 
         public void onNothingSelected(AdapterView<?> parent) {
@@ -140,13 +146,11 @@ public class GameSetupActivity extends ActionBarActivity {
         }
     }
 
-    public class CategorySpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener { //Implement stuff to show related to categories
+    //Not sure if this and mode listener is even necessary
+    public class CategorySpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
         public void onItemSelected(AdapterView<?> parent, View view,
                                    int pos, long id) {
-            // An item was selected. You can retrieve the selected item using
-            // parent.getItemAtPosition(pos)
-            //Set category here
 
         }
 
@@ -155,26 +159,24 @@ public class GameSetupActivity extends ActionBarActivity {
         }
     }
     public class LengthSpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener { //Implement stuff to show related to categories
-
-        public void onItemSelected(AdapterView<?> parent, View view,
-                                   int pos, long id) {
+        public void onItemSelected(AdapterView<?> parent, View view,int pos, long id) {
             String length = parent.getItemAtPosition(pos).toString();
-
-            if(length.compareTo("Short")==0){ //Can always change later
-                numQText.setText("15");
-            } //easy
-            else if(length.compareTo("Medium")==0){
-                numQText.setText("30");
-            }//set to normal
-            else if(length.compareTo("Long")==0){
-                numQText.setText("50");
-            }//hard
-            else{
-
+            switch(length){
+                case "Short":{
+                    numTText.setText(""+Q_SHORT);
+                    break;
+                }
+                case "Medium":{
+                    numTText.setText(""+Q_MED);
+                    break;
+                }
+                case "Long":{
+                    numTText.setText(""+Q_LONG);
+                    break;
+                }
+                default : break;
             }
-
         }
-
         public void onNothingSelected(AdapterView<?> parent) {
             Toast.makeText(getBaseContext(), "Length not selected", Toast.LENGTH_SHORT).show();
         }

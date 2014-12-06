@@ -40,5 +40,12 @@
     <string name="toast_incorrect_notification">Answer is Wrong</string>
     <string name="title_activity_game_result">Results</string>
     <string name="toast_time_out">Time out !!!</string>
+    <string name="default_letter">A</string>
+    <string name="blank"></string>
+    <string name="zero">0</string>
+    <string name="score_view">Score</string>
+    <string name="streak_view">Streak</string>
+    <string name="skip_button">Skip</string>
+    <string name="difficulty_text">Difficulty</string>
 
 </resources>
