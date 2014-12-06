@@ -162,23 +162,25 @@
     <Button
         android:layout_width="1600dp"
         android:layout_height="wrap_content"
-        android:id="@+id/play_again_button"
-        android:onClick="onPlayAgainButtonClick"
-        android:layout_alignParentBottom="true"
-        android:layout_toLeftOf="@+id/from_result_to_menu_button"
+        android:id="@+id/button_play_again"
+        android:background="@color/material_blue_grey_800"
+        android:text="Play Again"
+        android:textColor="@color/background_floating_material_light"
+        android:layout_above="@+id/button_return_to_menu"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:background="@android:color/transparent"
-        android:layout_below="@+id/circle_group" />
+        android:layout_alignParentStart="true"/>
 
     <Button
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:id="@+id/from_result_to_menu_button"
-        android:onClick="onGoMainMenuButtonClick"
+        android:id="@+id/button_return_to_menu"
         android:layout_alignParentRight="true"
-        android:background="@android:color/transparent"
+        android:background="#ffff009a"
+        android:text="Return to Main Menu"
+        android:textColor="@color/background_floating_material_light"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/circle_group" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:nestedScrollingEnabled="true"/>
 
 </RelativeLayout>
