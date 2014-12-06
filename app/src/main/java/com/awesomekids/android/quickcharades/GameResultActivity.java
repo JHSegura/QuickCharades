@@ -20,6 +20,9 @@ public class GameResultActivity extends ActionBarActivity {
     private TextView lengthView;
     private TextView catView;
 
+    private Button mPlayAgainButton;
+    private Button mMainMenuButton;
+
     private int score, time, qAnswered, qTotal, streak;
 
     @Override
@@ -48,6 +51,24 @@ public class GameResultActivity extends ActionBarActivity {
         TextView qView = (TextView) findViewById(R.id.text_view_question);
         TextView streakView = (TextView) findViewById(R.id.text_view_streak);
 
+        mPlayAgainButton = (Button) findViewById(R.id.button_play_again);
+        mPlayAgainButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setResult(1);
+                finish();
+            }
+        });
+
+        mMainMenuButton = (Button) findViewById(R.id.button_return_to_menu);
+        mMainMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setResult(0);
+                finish();
+            }
+        });
+
         scoreView.setText("Score: "+score);
         timeView.setText("Total Time: "+time);
         qView.setText("Correct Questions: "+qAnswered+"/"+qTotal);
@@ -60,18 +81,6 @@ public class GameResultActivity extends ActionBarActivity {
         diffView.setText("Difficulty: "+diff.getValue());
         lengthView.setText("Length: "+length.getValue());
         catView.setText("Category: "+cat.getValue());
-        playAgainButton = (Button) findViewById(R.id.play_again_button);
-        goMainMenuButton = (Button) findViewById(R.id.from_result_to_menu_button);
-    }
-
-    public void onPlayAgainButtonClick(View view){
-        Intent playAgainIntent = new Intent(this,GameActivity.class);
-        //Get game mode info from textviews (Of Difficulty, Length, Category, Mode)
-        startActivity(playAgainIntent);
-    }
-    public void onGoMainMenuButtonClick(View view){
-        Intent goMainMenuIntent = new Intent(this,MainActivity.class);
-        startActivity(goMainMenuIntent);
     }
 
 

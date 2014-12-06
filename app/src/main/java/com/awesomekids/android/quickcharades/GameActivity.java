@@ -54,6 +54,8 @@ public class GameActivity extends Activity {
     private int mCurrentQuestion;
     private int mMaxQuestion;
 
+    private boolean gameEnded;
+
     //TODO : find a way to store ad retrieve image from database
     private Integer[] mImageIds = { R.drawable.image_001, R.drawable.image_002, R.drawable.image_003};
 
@@ -130,12 +132,8 @@ public class GameActivity extends Activity {
         // new question does not automatically generate random letters
         // TODO : Use information from category to generate different Questions into mGameQuestions
         setupAllLettersButton();
-
-
         startCountSession(); // start the first countdownSession
-
     } // end of onCreate
-
 
     /**
      * Very inefficient multithreading, no time to fix
@@ -235,16 +233,10 @@ public class GameActivity extends Activity {
     }
 
     public void onGameQuitButtonClick(View view) {
-//        setResult(RESULT_OK,goingBack);
-        if (null != mTimerThread) { // end timer
-            mTimerThread.interrupt();
-            mTimerThread = null;
-        }
+        turnOffTimer();
         setResult(0);
         finish();
     }
-
-
 
     public void onGameOptionButtonClick(View view) {
         Intent getSettingsIntent = new Intent(this,
@@ -333,20 +325,16 @@ public class GameActivity extends Activity {
      * if there's no more question, go to ResultActivity
      */
     public void goToNextQuestion() {
-
         mCurrentQuestion = ++mCurrentQuestion % mMaxQuestion;
+        if(mCurrentQuestion == 0)
+            gameEnded = true;
         // check if the question reaches mMaximum, or, return to 0
         // but since this function can only be called after first question, we only check for 0
         // if so, go to ResultActivity
 
         mTimerBar.setProgress(0);
-        // this will clean previous thread if it hasnt ended yet
-        if (null != mTimerThread) {
-            mTimerThread.interrupt();
-            mTimerThread = null;
-        }
-
-        if(mCurrentQuestion == 0) {
+        turnOffTimer(); // this will clean previous thread if it hasnt ended yet
+        if(gameEnded) {
             endGame();
         } else {
             mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
@@ -357,13 +345,33 @@ public class GameActivity extends Activity {
 
     }
 
+    public void resetGame() {
+        gameEnded = false;
+        mCurrentQuestion = 0;
+        setProgress(0);
+        mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
+        mAnswerTextView.setText("");
+        setupAllLettersButton();
+        turnOffTimer();
+        startCountSession(); // this starts the next n thread, how does android manage memory?
+    }
+
+
     public void endGame() {
         Intent i = new Intent(GameActivity.this, GameResultActivity.class);
         i.putExtra(GameActivity.KEY_TOTALTIME, mTimeElapsed);
         i.putExtra(GameActivity.KEY_TOTALQUESTION, mMaxQuestion);
         //Get score and streak as well
         // use intent only for temporary info
-        startActivity(i);
+        startActivityForResult(i, 0);
+    }
+
+    // function to contain duplicate codes
+    private void turnOffTimer() {
+        if (null != mTimerThread) { // end timer
+            mTimerThread.interrupt();
+            mTimerThread = null;
+        }
     }
 
     /**
@@ -373,9 +381,22 @@ public class GameActivity extends Activity {
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
-        if (null != mTimerThread) { // end timer
-            mTimerThread.interrupt();
-            mTimerThread = null;
+        turnOffTimer();
+    }
+    @Override
+    protected void onStop() {
+        turnOffTimer();
+        super.onStop();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == 1) {
+            resetGame();
+        }
+        else {
+            setResult(0);
+            finish();
         }
     }
 }
