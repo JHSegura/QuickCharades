@@ -79,7 +79,7 @@ public class GameActivity extends Activity {
 
         // To pass informatin from main screen
         Intent activityThatCalled = getIntent();
-        //Get info from gamesetup about diff,length,mode,and category
+        //TODO: Get info from gamesetup about diff,length,mode,and category
         //Get appropriate questions based on the above
         //Dont worry about mode
 

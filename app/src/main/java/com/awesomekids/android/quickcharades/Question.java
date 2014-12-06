@@ -39,9 +39,8 @@ public class Question {
             mRandomizedLetters.clear();
 
         Random Rand = new Random();
-        for (int i = 0; i < mAnswer.length(); i++) {
+        for (int i = 0; i < mAnswer.length(); i++)
             mRandomizedLetters.add(mAnswer.charAt(i));
-        }
         for (int i = mAnswer.length(); i < MAX_LETTER; i++)
             mRandomizedLetters.add((char) (Rand.nextInt(26) + 'A'));
         for (int i = 0; i < MAX_RAND; i++) {
