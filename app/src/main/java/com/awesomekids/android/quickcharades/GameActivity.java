@@ -235,11 +235,12 @@ public class GameActivity extends Activity {
     }
 
     public void onGameQuitButtonClick(View view) {
-
-        Intent goingBack = new Intent();
-//        goingBack.putExtra("some key", value);
-
-        setResult(RESULT_OK,goingBack);
+//        setResult(RESULT_OK,goingBack);
+        if (null != mTimerThread) { // end timer
+            mTimerThread.interrupt();
+            mTimerThread = null;
+        }
+        setResult(0);
         finish();
     }
 
@@ -363,5 +364,18 @@ public class GameActivity extends Activity {
         //Get score and streak as well
         // use intent only for temporary info
         startActivity(i);
+    }
+
+    /**
+     * Save information to pass on to next unpaused activity ( ex: switch portrait/landcape mode)
+     * @param savedInstanceState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        if (null != mTimerThread) { // end timer
+            mTimerThread.interrupt();
+            mTimerThread = null;
+        }
     }
 }

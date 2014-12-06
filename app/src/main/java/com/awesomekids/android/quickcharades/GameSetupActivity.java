@@ -109,8 +109,16 @@ public class GameSetupActivity extends ActionBarActivity {
         goPlayIntent.putExtra(KEY_LEN,hold);
         goPlayIntent.putExtra(KEY_CAT,categorySpinner.getSelectedItem().toString());
 
-        startActivity(goPlayIntent);
+        startActivityForResult(goPlayIntent, 0);
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == 0)
+            this.finish();
+    }
+
     public class DiffSpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
         public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
             String diff = parent.getItemAtPosition(pos).toString();
