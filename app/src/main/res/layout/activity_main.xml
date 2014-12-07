@@ -19,10 +19,11 @@
 
     <Button
         android:id="@+id/play_button"
-        android:layout_width="match_parent"
+        android:onClick="onPlayButtonClick"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:background="@android:color/transparent"
+        android:padding="23dp"
+        android:background="#ffff1411"
         android:text="@string/play_main_button"
         android:textSize="35sp"
         android:textStyle="bold"
@@ -31,23 +32,18 @@
         android:layout_below="@+id/space"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/spaceBETWEEN" />
-
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/spaceBETWEEN"
-        android:layout_above="@+id/group_menu_buttons" />
+        android:layout_alignRight="@+id/text_view_high_score"
+        android:layout_alignEnd="@+id/text_view_high_score"/>
 
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/group_menu_buttons"
-        android:layout_alignEnd="@+id/space2"
-        android:layout_above="@+id/space2">
+        android:layout_above="@+id/space2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="12dp">
 
         <Space
             android:layout_width="24dp"
@@ -56,11 +52,14 @@
             android:layout_alignParentLeft="true"/>
 
         <Button
-            android:layout_width="53dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:id="@+id/howto_button"
-            android:background="@android:color/transparent"
-            android:layout_toRightOf="@+id/space_1" />
+            style="?android:attr/buttonStyleSmall"
+            android:background="@android:drawable/ic_dialog_info"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/space_1"
+            android:layout_toEndOf="@+id/space_1"/>
 
         <Space
             android:layout_width="35dp"
@@ -71,12 +70,16 @@
 
         <Button
             android:id="@+id/leaderboards_button"
+            style="?android:attr/buttonStyleSmall"
             android:onClick="onLeaderboardsButtonClick"
             android:layout_width="53dp"
+            android:layout_marginLeft="11dp"
             android:layout_height="wrap_content"
             android:padding="24dp"
-            android:background="@android:color/transparent"
-            android:layout_toRightOf="@+id/space_2" />
+            android:background="@android:drawable/btn_star_big_on"
+            android:layout_below="@+id/space_3"
+            android:layout_toRightOf="@+id/space_2"
+            android:layout_alignBottom="@+id/howto_button"/>
 
         <Space
             android:layout_width="35dp"
@@ -86,12 +89,14 @@
 
         <Button
             android:id="@+id/friends_button"
+            style="?android:attr/buttonStyleSmall"
             android:onClick="onFriendsButtonClick"
             android:layout_width="53dp"
             android:layout_height="wrap_content"
             android:padding="24dp"
-            android:background="@android:color/transparent"
-            android:layout_toRightOf="@+id/space_3" />
+            android:background="@android:drawable/sym_action_chat"
+            android:layout_toRightOf="@+id/space_3"
+            android:layout_alignBottom="@+id/leaderboards_button"/>
 
         <Space
             android:layout_width="25dp"
@@ -101,13 +106,17 @@
 
         <Button
             android:id="@+id/setting_button"
+            style="?android:attr/buttonStyleSmall"
             android:onClick="onSettingButtonClick"
             android:layout_width="53dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
             android:padding="24dp"
-            android:background="@android:color/transparent"
-            android:layout_marginEnd="63dp"
-            android:layout_toRightOf="@+id/space_4" />
+            android:background="@android:drawable/ic_menu_preferences"
+            android:layout_alignBottom="@+id/friends_button"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
 
 
     </RelativeLayout>
@@ -117,8 +126,7 @@
         android:layout_height="50dp"
         android:id="@+id/space2"
         android:layout_above="@+id/text_view_high_score"
-        android:layout_alignRight="@+id/play_button"
-        android:layout_alignEnd="@+id/play_button" />
+        />
 
     <TextView
         android:layout_width="wrap_content"

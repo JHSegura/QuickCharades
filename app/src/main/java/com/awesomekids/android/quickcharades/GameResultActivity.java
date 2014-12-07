@@ -55,19 +55,23 @@ public class GameResultActivity extends ActionBarActivity {
         mPlayAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GameActivity.mPlayer = null;
                 setResult(1);
                 finish();
             }
         });
+        MainActivity.addButtonEffectOn(mPlayAgainButton);
 
         mMainMenuButton = (Button) findViewById(R.id.button_return_to_menu);
         mMainMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GameActivity.mPlayer = null; // java does garbage collection automatically
                 setResult(0);
                 finish();
             }
         });
+        MainActivity.addButtonEffectOn(mMainMenuButton);
 
         scoreView.setText("Score: "+score);
         timeView.setText("Total Time: "+time);
