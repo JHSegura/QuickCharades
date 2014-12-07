@@ -48,6 +48,17 @@ Target SDL : API Level 21: Android L
 * Need high resolution grahpics and sprite
 * In-Game: Implement Dynamic texboxes (ViewGroup)
 * In-Game: Implement Timer
+* -Fix Timer Issue
+* -Fix Game Not Reseting through Play Again Issue
+* -Image Icons for the Main Menu Buttons
+* -Loading player info in the menu via files/database
+* -Loading questions in Game via files/database
+* -Updating player info in the Results via files/database
+* -Fully connect Setup -> Game -> Result -> Game
+* -Create a Tutorial for HowTo
+* -Make the Settings Functional
+* -Make the interface scale with screen size 
+
 
 ### Some Links
 
