@@ -55,7 +55,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Length:"
+                android:text="@string/length_view"
                 android:id="@+id/text_view_length"
                 android:layout_gravity="left"
                 android:layout_marginBottom="10dp"
@@ -68,7 +68,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Category:"
+                android:text="@string/category_view"
                 android:id="@+id/text_view_category"
                 android:layout_gravity="left"
                 android:layout_marginBottom="10dp"
@@ -100,7 +100,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Score:"
+                android:text="@string/score_view_result"
                 android:id="@+id/text_view_score"
                 android:layout_gravity="left"
                 android:layout_marginBottom="10dp"
@@ -113,7 +113,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Highest Streak:"
+                android:text="@string/streak_max_view"
                 android:id="@+id/text_view_streak"
                 android:layout_gravity="left"
                 android:layout_marginBottom="10dp"
@@ -126,7 +126,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Correct Questions:"
+                android:text="@string/q_answered_view"
                 android:id="@+id/text_view_question"
                 android:layout_gravity="left"
                 android:layout_marginBottom="10dp"
@@ -139,7 +139,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Time:"
+                android:text="@string/time_view"
                 android:id="@+id/text_view_time_elapsed"
                 android:layout_gravity="left"
                 android:layout_marginBottom="10dp"
@@ -164,7 +164,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/button_play_again"
         android:background="@color/material_blue_grey_800"
-        android:text="Play Again"
+        android:text="@string/play_again_button"
         android:textColor="@color/background_floating_material_light"
         android:layout_above="@+id/button_return_to_menu"
         android:layout_alignParentLeft="true"
@@ -176,7 +176,7 @@
         android:id="@+id/button_return_to_menu"
         android:layout_alignParentRight="true"
         android:background="#ffff009a"
-        android:text="Return to Main Menu"
+        android:text="@string/return_to_main_menu_button"
         android:textColor="@color/background_floating_material_light"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"

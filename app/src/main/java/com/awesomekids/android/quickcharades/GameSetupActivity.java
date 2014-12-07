@@ -30,12 +30,12 @@ public class GameSetupActivity extends ActionBarActivity {
     public static final String KEY_MODE = "mode";
     public static final String KEY_CAT = "category";
 
-    private static final int T_EASY = 45;
-    private static final int T_NORM = 30;
-    private static final int T_HARD = 15;
-    private static final int Q_SHORT = 15;
-    private static final int Q_MED = 25;
-    private static final int Q_LONG = 40;
+    private static final int T_EASY = 20;
+    private static final int T_NORM = 15;
+    private static final int T_HARD = 10;
+    private static final int Q_SHORT = 10;
+    private static final int Q_MED = 20;
+    private static final int Q_LONG = 30;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -171,15 +171,15 @@ public class GameSetupActivity extends ActionBarActivity {
             String length = parent.getItemAtPosition(pos).toString();
             switch(length){
                 case "Short":{
-                    numTText.setText(""+Q_SHORT);
+                    numQText.setText(""+Q_SHORT);
                     break;
                 }
                 case "Medium":{
-                    numTText.setText(""+Q_MED);
+                    numQText.setText(""+Q_MED);
                     break;
                 }
                 case "Long":{
-                    numTText.setText(""+Q_LONG);
+                    numQText.setText(""+Q_LONG);
                     break;
                 }
                 default : break;

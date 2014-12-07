@@ -47,5 +47,14 @@
     <string name="streak_view">Streak</string>
     <string name="skip_button">Skip</string>
     <string name="difficulty_text">Difficulty</string>
+    <string name="length_view">Length:</string>
+    <string name="category_view">Category:</string>
+    <string name="score_view_result">Score:</string>
+    <string name="streak_max_view">Highest Streak:</string>
+    <string name="q_answered_view">Correct Questions:</string>
+    <string name="time_view">Total Time:</string>
+    <string name="play_again_button">Play Again</string>
+    <string name="return_to_main_menu_button">Return to Main Menu</string>
+    <string name="play_main_button">Play            </string>
 
 </resources>
