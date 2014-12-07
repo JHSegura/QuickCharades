@@ -55,6 +55,7 @@ public class GameResultActivity extends ActionBarActivity {
         mPlayAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GameActivity.mPlayer = null;
                 setResult(1);
                 finish();
             }
@@ -64,6 +65,7 @@ public class GameResultActivity extends ActionBarActivity {
         mMainMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GameActivity.mPlayer = null; // java does garbage collection automatically
                 setResult(0);
                 finish();
             }

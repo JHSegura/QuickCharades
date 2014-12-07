@@ -91,8 +91,6 @@ public class GameActivity extends Activity {
         mAnswerTextView = (TextView) findViewById(R.id.game_answer_textview);
         mScoreTextView = (TextView) findViewById(R.id.game_score_textview);
         mStreakView = (TextView) findViewById(R.id.game_streak_number);
-
-
         mEnterButton    = (Button) findViewById(R.id.game_button_enter);
         mEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,18 +115,10 @@ public class GameActivity extends Activity {
                 goToNextQuestion();
             }
         });
-
-        // TODO : find a way to load informations from player database
-        if(mPlayer == null)
-            mPlayer = new Player();
-        else { //temporary fix, import data using singletons design (static player)
-            mScoreTextView.setText("" + mPlayer.currentScore);
-            mStreakView.setText("" + mPlayer.currentStreak);
-        }
-
         mTimerBar = (ProgressBar) findViewById(R.id.barTimer);
 
         loadAllQuestions(); // this will allocate and get resources for the game
+        setupPlayerDisplay();
         // new question does not automatically generate random letters
         // TODO : Use information from category to generate different Questions into mGameQuestions
         setupAllLettersButton();
@@ -173,6 +163,17 @@ public class GameActivity extends Activity {
             }
         };
         mTimerThread.start();
+    }
+
+
+    // Only used when starting a new game
+    public void setupPlayerDisplay() {
+        // TODO : find a way to load informations from player database
+//        if(mPlayer == null)
+        mPlayer = new Player(); // always make new player
+        // after loading players , or using previous player , display their stats
+        mScoreTextView.setText("" + mPlayer.currentScore);
+        mStreakView.setText("" + mPlayer.currentStreak);
     }
 
     public void updateProgress(final int timePassed) {
@@ -349,6 +350,7 @@ public class GameActivity extends Activity {
         gameEnded = false;
         mCurrentQuestion = 0;
         setProgress(0);
+        setupPlayerDisplay();
         mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
         mAnswerTextView.setText("");
         setupAllLettersButton();
