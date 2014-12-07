@@ -78,7 +78,7 @@
             android:textColor="#ffffffff"
             android:layout_marginLeft="24dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="46dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
@@ -90,7 +90,8 @@
             android:src="@drawable/image_001"
             android:background="@android:color/background_dark"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:nestedScrollingEnabled="false"/>
 
         <TextView
             android:layout_width="60dp"

@@ -56,5 +56,6 @@
     <string name="play_again_button">Play Again</string>
     <string name="return_to_main_menu_button">Return to Main Menu</string>
     <string name="play_main_button">Play            </string>
+    <string name="title_activity_database">DatabaseActivity</string>
 
 </resources>

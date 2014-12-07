@@ -70,7 +70,7 @@ public class GameSetupActivity extends ActionBarActivity {
     public void createCategorySpinner(){
         categorySpinner = (Spinner) findViewById(R.id.spinner_category_select);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,android.R.layout.simple_spinner_item,new ArrayList<String>());
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item,new ArrayList<String>());
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         categorySpinner.setAdapter(adapter);
         for(QCategory C : QCategory.values()) {
