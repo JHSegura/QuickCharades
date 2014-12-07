@@ -24,6 +24,7 @@ public class GameResultActivity extends ActionBarActivity {
     private Button mMainMenuButton;
 
     private int score, time, qAnswered, qTotal, streak;
+    private String rCat, rDiff, rLen, rMode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,10 @@ public class GameResultActivity extends ActionBarActivity {
         //get info from game activity
         time = getIntent().getIntExtra(GameActivity.KEY_TOTALTIME, 0); // by default its zero
         qTotal = getIntent().getIntExtra(GameActivity.KEY_TOTALQUESTION, 0); // by default its zero
-
+        rCat = getIntent().getStringExtra(GameSetupActivity.KEY_CAT);
+        rLen = getIntent().getStringExtra(GameSetupActivity.KEY_LEN);
+        rDiff = getIntent().getStringExtra(GameSetupActivity.KEY_DIFF);
+        rMode = getIntent().getStringExtra(GameSetupActivity.KEY_MODE);
         // get info from player
         try {
             loadPlayerInfo();
@@ -41,11 +45,6 @@ public class GameResultActivity extends ActionBarActivity {
             e.printStackTrace();
         }
 
-        Difficulty diff = Difficulty.EASY;
-        Mode mode = Mode.SINGLE;
-        Length length = Length.SHORT;
-        QCategory cat = QCategory.HEROES;
-        //Maybe make these instance vars
         TextView scoreView = (TextView) findViewById(R.id.text_view_score);
         TextView timeView = (TextView) findViewById(R.id.text_view_time_elapsed);
         TextView qView = (TextView) findViewById(R.id.text_view_question);
@@ -55,6 +54,7 @@ public class GameResultActivity extends ActionBarActivity {
         mPlayAgainButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //How to send info to game from here?
                 GameActivity.mPlayer = null;
                 setResult(1);
                 finish();
@@ -82,9 +82,9 @@ public class GameResultActivity extends ActionBarActivity {
         lengthView = (TextView) findViewById(R.id.text_view_length);
         catView = (TextView) findViewById(R.id.text_view_category);
 
-        diffView.setText("Difficulty: "+diff.getValue());
-        lengthView.setText("Length: "+length.getValue());
-        catView.setText("Category: "+cat.getValue());
+        diffView.setText("Difficulty: "+rDiff);
+        lengthView.setText("Length: "+rLen);
+        catView.setText("Category: "+rCat);
     }
 
 

@@ -30,10 +30,10 @@ public class MainActivity extends Activity {
     }
 
     public void onFriendsButtonClick(View view) {
-//        Intent getFriendsListIntent = new Intent(this,FriendActivity.class);
+        Intent getFriendsListIntent = new Intent(this,DatabaseActivity.class);
 //        final int result = 1; //what is this for
-//        startActivity(getFriendsListIntent);
-        Toast.makeText(getBaseContext(), "Friends COMING SOON", Toast.LENGTH_SHORT).show();
+        startActivity(getFriendsListIntent);
+//        Toast.makeText(getBaseContext(), "Friends COMING SOON", Toast.LENGTH_SHORT).show();
     }
 
     public void onPlayButtonClick(View view) {

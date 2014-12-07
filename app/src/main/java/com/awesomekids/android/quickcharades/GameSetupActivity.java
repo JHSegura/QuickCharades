@@ -32,12 +32,12 @@ public class GameSetupActivity extends ActionBarActivity {
     public static final String KEY_MODE = "mode";
     public static final String KEY_CAT = "category";
 
-    private static final int T_EASY = 20;
-    private static final int T_NORM = 15;
-    private static final int T_HARD = 10;
-    private static final int Q_SHORT = 10;
-    private static final int Q_MED = 20;
-    private static final int Q_LONG = 30;
+    public static final int T_EASY = 20;
+    public static final int T_NORM = 15;
+    public static final int T_HARD = 10;
+    public static final int Q_SHORT = 10;
+    public static final int Q_MED = 20;
+    public static final int Q_LONG = 30;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

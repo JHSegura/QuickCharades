@@ -21,9 +21,9 @@
         android:id="@+id/play_button"
         android:onClick="onPlayButtonClick"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:padding="23dp"
-        android:background="#ffff1411"
+        android:background="#A50000"
         android:text="@string/play_main_button"
         android:textSize="35sp"
         android:textStyle="bold"
@@ -31,9 +31,13 @@
         android:typeface="sans"
         android:layout_below="@+id/space"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentStart="false"
         android:layout_alignRight="@+id/text_view_high_score"
-        android:layout_alignEnd="@+id/text_view_high_score"/>
+        android:layout_alignEnd="@+id/text_view_high_score"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="-20dp"
+        android:layout_marginRight="-33dp" />
 
     <RelativeLayout
         android:orientation="horizontal"
@@ -108,7 +112,7 @@
             android:id="@+id/setting_button"
             style="?android:attr/buttonStyleSmall"
             android:onClick="onSettingButtonClick"
-            android:layout_width="53dp"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="5dp"
             android:padding="24dp"

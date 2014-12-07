@@ -53,7 +53,13 @@ public class GameActivity extends Activity {
     private Toast mAnswerToast;
     private int mCurrentQuestion;
     private int mMaxQuestion;
+    private String mDiff;
+    private String mCat;
+    private String mLen;
+    private String mMode;
 
+    private int time;
+    private int numQ;
     private boolean gameEnded;
 
     //TODO : find a way to store ad retrieve image from database
@@ -82,6 +88,18 @@ public class GameActivity extends Activity {
         //TODO: Get info from gamesetup about diff,length,mode,and category
         //Get appropriate questions based on the above
         //Dont worry about mode
+
+        ///////Here we get information about diff, len, cat, and mode from setup
+        mDiff = activityThatCalled.getStringExtra(GameSetupActivity.KEY_DIFF);
+        mLen = activityThatCalled.getStringExtra(GameSetupActivity.KEY_LEN);
+        mCat = activityThatCalled.getStringExtra(GameSetupActivity.KEY_CAT); //Use this to figure out which q's to get
+        mMode = activityThatCalled.getStringExtra(GameSetupActivity.KEY_MODE); //FOR FUTURE USE: Use this to determine matchmaking
+        //Set the time and number of q's from the above
+        time = mDiff.equals(Difficulty.EASY) ? GameSetupActivity.T_EASY :
+                (mDiff.equals(Difficulty.MEDIUM) ? GameSetupActivity.T_NORM : GameSetupActivity.T_HARD);
+        numQ = mLen.equals(Length.SHORT) ? GameSetupActivity.Q_SHORT :
+                (mLen.equals(Length.MEDIUM) ? GameSetupActivity.Q_MED : GameSetupActivity.Q_LONG);
+
 
 //        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
         mCurrentQuestion = 0;
@@ -367,6 +385,10 @@ public class GameActivity extends Activity {
         Intent i = new Intent(GameActivity.this, GameResultActivity.class);
         i.putExtra(GameActivity.KEY_TOTALTIME, mTimeElapsed);
         i.putExtra(GameActivity.KEY_TOTALQUESTION, mMaxQuestion);
+        i.putExtra(GameSetupActivity.KEY_DIFF,mDiff);
+        i.putExtra(GameSetupActivity.KEY_CAT,mCat);
+        i.putExtra(GameSetupActivity.KEY_MODE,mMode);
+        i.putExtra(GameSetupActivity.KEY_LEN,mLen);
         //Get score and streak as well
         // use intent only for temporary info
         startActivityForResult(i, 0);
