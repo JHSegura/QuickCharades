@@ -60,6 +60,7 @@ public class GameResultActivity extends ActionBarActivity {
                 finish();
             }
         });
+        MainActivity.addButtonEffectOn(mPlayAgainButton);
 
         mMainMenuButton = (Button) findViewById(R.id.button_return_to_menu);
         mMainMenuButton.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +71,7 @@ public class GameResultActivity extends ActionBarActivity {
                 finish();
             }
         });
+        MainActivity.addButtonEffectOn(mMainMenuButton);
 
         scoreView.setText("Score: "+score);
         timeView.setText("Total Time: "+time);

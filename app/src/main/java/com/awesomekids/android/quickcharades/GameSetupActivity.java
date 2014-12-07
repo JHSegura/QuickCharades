@@ -25,6 +25,8 @@ public class GameSetupActivity extends ActionBarActivity {
     private Spinner categorySpinner;
     private Spinner lengthSpinner;
 
+    private Button mPlayButton;
+
     public static final String KEY_DIFF = "difficulty";
     public static final String KEY_LEN = "length";
     public static final String KEY_MODE = "mode";
@@ -42,7 +44,8 @@ public class GameSetupActivity extends ActionBarActivity {
         setContentView(R.layout.activity_game_setup);
         numQText = (TextView)findViewById(R.id.text_number_of_questions_value);
         numTText = (TextView)findViewById(R.id.text_timer_value);
-        Button goButton = (Button) findViewById(R.id.go_to_game_button);
+        mPlayButton = (Button) findViewById(R.id.go_to_game_button);
+        MainActivity.addButtonEffectOn(mPlayButton);
         createDiffSpinner();
         createModeSpinner();
         createCategorySpinner();

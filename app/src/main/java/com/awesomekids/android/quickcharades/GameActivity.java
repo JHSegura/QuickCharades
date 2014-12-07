@@ -108,6 +108,8 @@ public class GameActivity extends Activity {
                 resetAllLettersButton();
             }
         });
+        MainActivity.addButtonEffectOn(mClearButton);
+
         mSkipButton = (Button) findViewById(R.id.game_skip_button);
         mSkipButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -115,6 +117,8 @@ public class GameActivity extends Activity {
                 goToNextQuestion();
             }
         });
+        MainActivity.addButtonEffectOn(mSkipButton);
+
         mTimerBar = (ProgressBar) findViewById(R.id.barTimer);
 
         loadAllQuestions(); // this will allocate and get resources for the game
