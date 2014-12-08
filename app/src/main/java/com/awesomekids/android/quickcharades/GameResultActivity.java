@@ -91,6 +91,6 @@ public class GameResultActivity extends ActionBarActivity {
     public void loadPlayerInfo() {
         score = GameActivity.mPlayer.currentScore;
         qAnswered = GameActivity.mPlayer.currentQanswered;
-        streak = GameActivity.mPlayer.currentStreak;
+        streak = GameActivity.mPlayer.getStats().maxStreak;
     }
 }

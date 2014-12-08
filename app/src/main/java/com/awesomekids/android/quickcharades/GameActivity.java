@@ -95,10 +95,10 @@ public class GameActivity extends Activity {
         mCat = activityThatCalled.getStringExtra(GameSetupActivity.KEY_CAT); //Use this to figure out which q's to get
         mMode = activityThatCalled.getStringExtra(GameSetupActivity.KEY_MODE); //FOR FUTURE USE: Use this to determine matchmaking
         //Set the time and number of q's from the above
-        time = mDiff.equals(Difficulty.EASY) ? GameSetupActivity.T_EASY :
-                (mDiff.equals(Difficulty.MEDIUM) ? GameSetupActivity.T_NORM : GameSetupActivity.T_HARD);
-        numQ = mLen.equals(Length.SHORT) ? GameSetupActivity.Q_SHORT :
-                (mLen.equals(Length.MEDIUM) ? GameSetupActivity.Q_MED : GameSetupActivity.Q_LONG);
+        time = mDiff.equals(Difficulty.EASY.getValue()) ? GameSetupActivity.T_EASY :
+                (mDiff.equals(Difficulty.MEDIUM.getValue()) ? GameSetupActivity.T_NORM : GameSetupActivity.T_HARD);
+        numQ = mLen.equals(Length.SHORT.getValue()) ? GameSetupActivity.Q_SHORT :
+                (mLen.equals(Length.MEDIUM.getValue()) ? GameSetupActivity.Q_MED : GameSetupActivity.Q_LONG);
 
 
 //        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
@@ -389,10 +389,12 @@ public class GameActivity extends Activity {
         i.putExtra(GameSetupActivity.KEY_CAT,mCat);
         i.putExtra(GameSetupActivity.KEY_MODE,mMode);
         i.putExtra(GameSetupActivity.KEY_LEN,mLen);
+        mTimeElapsed = 0;
         //Get score and streak as well
         // use intent only for temporary info
         startActivityForResult(i, 0);
     }
+
 
     // function to contain duplicate codes
     private void turnOffTimer() {
