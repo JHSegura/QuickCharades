@@ -214,7 +214,8 @@ public class GameActivity extends Activity {
     public void onTimeOut() {
         // perform any final actions here
         hideAllLetter();
-        hideEnterButton();
+        disableButton(mEnterButton);
+        disableButton(mSkipButton);
 
         mAnswerToast = Toast.makeText(this, getString(R.string.toast_time_out), Toast.LENGTH_SHORT);
         mAnswerToast.setGravity(Gravity.CENTER, 0, 0);
@@ -248,17 +249,16 @@ public class GameActivity extends Activity {
         }
     }
 
-    public void hideEnterButton() {
-        mEnterButton.setTextColor(Color.RED);
-//        mEnterButton.setVisibility(View.INVISIBLE);
-        mEnterButton.setClickable(false);
+    public void disableButton(Button button) {
+        button.setTextColor(Color.RED);
+        button.setClickable(false);
     }
 
-    public void setupEnterButton() {
-        mEnterButton.setTextColor(Color.BLACK);
-//        mEnterButton.setVisibility(View.VISIBLE);
-        mEnterButton.setClickable(true);
+    public void enableButton(Button button) {
+        button.setTextColor(Color.BLACK);
+        button.setClickable(true);
     }
+
 
     public void letterClicked(View v){
         v.setClickable(false);
@@ -332,6 +332,8 @@ public class GameActivity extends Activity {
         if (isCorrect) {
             mPlayer.currentQanswered++;
             turnOffTimer();
+            disableButton(mSkipButton);
+            disableButton(mEnterButton);
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -364,6 +366,10 @@ public class GameActivity extends Activity {
      * if there's no more question, go to ResultActivity
      */
     public void goToNextQuestion() {
+        // always allow button to be clicked before exiting the GameActivity
+        enableButton(mSkipButton);
+        enableButton(mEnterButton);
+
         mCurrentQuestion = ++mCurrentQuestion % mMaxQuestion;
         if(mCurrentQuestion == 0)
             gameEnded = true;
@@ -379,7 +385,6 @@ public class GameActivity extends Activity {
             mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
             mAnswerTextView.setText("");
             setupAllLettersButton();
-            setupEnterButton();
             startCountSession(); // this starts the next n thread, how does android manage memory?
         }
 
@@ -393,7 +398,6 @@ public class GameActivity extends Activity {
         mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
         mAnswerTextView.setText("");
         setupAllLettersButton();
-        setupEnterButton();
         turnOffTimer();
         startCountSession(); // this starts the next n thread, how does android manage memory?
     }
