@@ -2,6 +2,7 @@ package com.awesomekids.android.quickcharades;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -213,6 +214,8 @@ public class GameActivity extends Activity {
     public void onTimeOut() {
         // perform any final actions here
         hideAllLetter();
+        hideEnterButton();
+
         mAnswerToast = Toast.makeText(this, getString(R.string.toast_time_out), Toast.LENGTH_SHORT);
         mAnswerToast.setGravity(Gravity.CENTER, 0, 0);
         mAnswerToast.show();
@@ -243,6 +246,18 @@ public class GameActivity extends Activity {
             letterButtons = (Button) findViewById(id);
             letterButtons.setVisibility(View.INVISIBLE);
         }
+    }
+
+    public void hideEnterButton() {
+        mEnterButton.setTextColor(Color.RED);
+//        mEnterButton.setVisibility(View.INVISIBLE);
+        mEnterButton.setClickable(false);
+    }
+
+    public void setupEnterButton() {
+        mEnterButton.setTextColor(Color.BLACK);
+//        mEnterButton.setVisibility(View.VISIBLE);
+        mEnterButton.setClickable(true);
     }
 
     public void letterClicked(View v){
@@ -316,6 +331,7 @@ public class GameActivity extends Activity {
 
         if (isCorrect) {
             mPlayer.currentQanswered++;
+            turnOffTimer();
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -363,6 +379,7 @@ public class GameActivity extends Activity {
             mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
             mAnswerTextView.setText("");
             setupAllLettersButton();
+            setupEnterButton();
             startCountSession(); // this starts the next n thread, how does android manage memory?
         }
 
@@ -376,6 +393,7 @@ public class GameActivity extends Activity {
         mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
         mAnswerTextView.setText("");
         setupAllLettersButton();
+        setupEnterButton();
         turnOffTimer();
         startCountSession(); // this starts the next n thread, how does android manage memory?
     }
