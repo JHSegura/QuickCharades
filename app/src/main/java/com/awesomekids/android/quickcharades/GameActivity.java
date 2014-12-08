@@ -67,13 +67,31 @@ public class GameActivity extends Activity {
 
 
     //TODO : find a way to store ad retrieve image from database
-    private Integer[] mImageIds = { R.drawable.image_001, R.drawable.image_002, R.drawable.image_003};
+    private Integer[] mImageIds = {
+            R.drawable.image_001,
+            R.drawable.image_002,
+            R.drawable.image_003,
+            R.drawable.image_004,
+            R.drawable.image_005,
+            R.drawable.image_006,
+            R.drawable.image_007,
+            R.drawable.image_008,
+            R.drawable.image_009,
+            R.drawable.image_010
+    };
 
     // TODO : find a way to store and retrive strings from database
     private String[] mImageNames = {
             "IRONMAN",
             "AANG",
-            "MARIO"
+            "MARIO",
+            "BATMAN",
+            "CATWOMAN",
+            "DAREDEVIL",
+            "DOVAHKIIN",
+            "DEADPOOL",
+            "THOR",
+            "MAGNETO"
     };
 
 
