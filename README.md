@@ -2,9 +2,10 @@
 
 
 
-* App Release Link : [Download the App!](http://goo.gl/HGd2zi)
-* Mirror Link : [Download the App!](https://docs.google.com/uc?id=0B-BySq1dcRE_Snp0UkpDcENOT2c&export=download)
+* App Release Link : [Download the App!](http://goo.gl/TVcHGp)
+* Mirror Link : [Download the App!](https://docs.google.com/uc?authuser=0&id=0B-BySq1dcRE_Ukw1bVROVlFLS2c&export=download)
 
+Javadoc Documentation : [Documentation](http://josue3205.github.io/QuickCharades/)
 [![ScreenShot](https://github.com/Josue3205/QuickCharades/blob/master/app/src/main/res/drawable-mdpi/bg_main_clean.png)](http://tinypic.com/r/vykzt2/8)
 
 
