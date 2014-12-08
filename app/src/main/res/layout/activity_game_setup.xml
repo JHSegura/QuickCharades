@@ -23,7 +23,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:id="@+id/space_2"
         android:layout_below="@+id/spinner_diff_select" />
 
@@ -37,7 +37,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="75dp"
         android:id="@+id/space_3"
         android:layout_below="@+id/spinner_length_select" />
 
@@ -51,7 +51,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="70dp"
         android:id="@+id/space_4"
         android:layout_below="@+id/spinner_mode_select" />
 
@@ -65,7 +65,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="45dp"
         android:id="@+id/space_5"
         android:layout_below="@+id/spinner_category_select" />
 

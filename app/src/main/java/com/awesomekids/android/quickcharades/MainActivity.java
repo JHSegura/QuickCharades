@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -27,6 +28,11 @@ public class MainActivity extends Activity {
         mFriendsButton = (Button) findViewById(R.id.friends_button);
         mLeaderBoardsButton = (Button) findViewById(R.id.leaderboards_button);
         mHowToButton = (Button) findViewById(R.id.howto_button);
+
+        //load player info
+        int pHScore = 0;//Get player's high score
+        TextView highScoreView = (TextView) findViewById(R.id.text_view_high_score);
+        highScoreView.setText(R.string.text_view_high_score+pHScore);
     }
 
     public void onFriendsButtonClick(View view) {

@@ -47,7 +47,7 @@ public class GameActivity extends Activity {
     private Button mSkipButton;
 
 
-    private final int RUNTIME = 15000; // 15 seconds
+//    private final int RUNTIME = 15000; // 15 seconds
     protected boolean mbActive;
     private ProgressBar mTimerBar;
     private Thread mTimerThread;
@@ -66,6 +66,9 @@ public class GameActivity extends Activity {
     private int numQ;
     private boolean gameEnded;
 
+
+
+
     //TODO : find a way to store ad retrieve image from database
     private Integer[] mImageIds = { R.drawable.image_001, R.drawable.image_002, R.drawable.image_003};
 
@@ -75,6 +78,10 @@ public class GameActivity extends Activity {
             "AANG",
             "MARIO"
     };
+
+
+
+
     private int mTimeElapsed;
     private ArrayList<Question> mGameQuestions;
     static private Integer[] sLettersButtonId = {
@@ -89,9 +96,6 @@ public class GameActivity extends Activity {
 
         // To pass informatin from main screen
         Intent activityThatCalled = getIntent();
-        //TODO: Get info from gamesetup about diff,length,mode,and category
-        //Get appropriate questions based on the above
-        //Dont worry about mode
 
         ///////Here we get information about diff, len, cat, and mode from setup
         mDiff = activityThatCalled.getStringExtra(GameSetupActivity.KEY_DIFF);
@@ -99,10 +103,11 @@ public class GameActivity extends Activity {
         mCat = activityThatCalled.getStringExtra(GameSetupActivity.KEY_CAT); //Use this to figure out which q's to get
         mMode = activityThatCalled.getStringExtra(GameSetupActivity.KEY_MODE); //FOR FUTURE USE: Use this to determine matchmaking
         //Set the time and number of q's from the above
-        time = mDiff.equals(Difficulty.EASY) ? GameSetupActivity.T_EASY :
-                (mDiff.equals(Difficulty.MEDIUM) ? GameSetupActivity.T_NORM : GameSetupActivity.T_HARD);
-        numQ = mLen.equals(Length.SHORT) ? GameSetupActivity.Q_SHORT :
-                (mLen.equals(Length.MEDIUM) ? GameSetupActivity.Q_MED : GameSetupActivity.Q_LONG);
+        time = mDiff.equals(Difficulty.EASY.getValue()) ? GameSetupActivity.T_EASY :
+                (mDiff.equals(Difficulty.MEDIUM.getValue()) ? GameSetupActivity.T_NORM : GameSetupActivity.T_HARD);
+        time *= 1000;
+        numQ = mLen.equals(Length.SHORT.getValue()) ? GameSetupActivity.Q_SHORT :
+                (mLen.equals(Length.MEDIUM.getValue()) ? GameSetupActivity.Q_MED : GameSetupActivity.Q_LONG);
 
 
 //        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
@@ -177,7 +182,7 @@ public class GameActivity extends Activity {
             public void run() {
                 int waited = 0;
                 try {
-                    while ((waited < RUNTIME)) {
+                    while ((waited < time)) { //RUNTIME = time
                         sleep(GameActivity.BAR_REFRESH_RATE); // the progress bar update every 1000 ms
                         waited += GameActivity.BAR_REFRESH_RATE;
                         mTimeElapsed += GameActivity.BAR_REFRESH_RATE/1000; // add 1 seconds
@@ -217,7 +222,7 @@ public class GameActivity extends Activity {
     public void updateProgress(final int timePassed) {
         if(null != mTimerBar) {
             // Ignore rounding error here
-            final int progress = mTimerBar.getMax() * timePassed / RUNTIME;
+            final int progress = mTimerBar.getMax() * timePassed / time; //RUNTIME = time
             mTimerBar.setProgress(progress);
         }
     }
@@ -229,7 +234,8 @@ public class GameActivity extends Activity {
     public void onTimeOut() {
         // perform any final actions here
         hideAllLetter();
-        hideEnterButton();
+        disableButton(mEnterButton);
+        disableButton(mSkipButton);
 
         mAnswerToast = Toast.makeText(this, getString(R.string.toast_time_out), Toast.LENGTH_SHORT);
         mAnswerToast.setGravity(Gravity.CENTER, 0, 0);
@@ -245,15 +251,25 @@ public class GameActivity extends Activity {
         }, 1500);
     }
 
+
+
+
+
+
     /**
      * Load questions
      */
-    private void loadAllQuestions() {
+    private void loadAllQuestions() { //Here
         mGameQuestions = new ArrayList<>();
-        for (int i = 0; i < mImageNames.length; i++) {
+        for (int i = 0; i < mImageIds.length; i++) { //mImageIds.length() = numQ
             mGameQuestions.add(new Question(mImageIds[i], mImageNames[i]));
         }
     }
+
+
+
+
+
 
     public void hideAllLetter() {
         Button letterButtons;
@@ -263,17 +279,16 @@ public class GameActivity extends Activity {
         }
     }
 
-    public void hideEnterButton() {
-        mEnterButton.setTextColor(Color.RED);
-//        mEnterButton.setVisibility(View.INVISIBLE);
-        mEnterButton.setClickable(false);
+    public void disableButton(Button button) {
+        button.setTextColor(Color.RED);
+        button.setClickable(false);
     }
 
-    public void setupEnterButton() {
-        mEnterButton.setTextColor(Color.BLACK);
-//        mEnterButton.setVisibility(View.VISIBLE);
-        mEnterButton.setClickable(true);
+    public void enableButton(Button button) {
+        button.setTextColor(Color.BLACK);
+        button.setClickable(true);
     }
+
 
     public void letterClicked(View v){
         v.setClickable(false);
@@ -347,6 +362,8 @@ public class GameActivity extends Activity {
         if (isCorrect) {
             mPlayer.currentQanswered++;
             turnOffTimer();
+            disableButton(mSkipButton);
+            disableButton(mEnterButton);
             final Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -379,6 +396,10 @@ public class GameActivity extends Activity {
      * if there's no more question, go to ResultActivity
      */
     public void goToNextQuestion() {
+        // always allow button to be clicked before exiting the GameActivity
+        enableButton(mSkipButton);
+        enableButton(mEnterButton);
+
         mCurrentQuestion = ++mCurrentQuestion % mMaxQuestion;
         if(mCurrentQuestion == 0)
             gameEnded = true;
@@ -394,7 +415,6 @@ public class GameActivity extends Activity {
             mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
             mAnswerTextView.setText("");
             setupAllLettersButton();
-            setupEnterButton();
             startCountSession(); // this starts the next n thread, how does android manage memory?
         }
 
@@ -408,7 +428,6 @@ public class GameActivity extends Activity {
         mImagePortrait.setImageResource(mImageIds[mCurrentQuestion]);
         mAnswerTextView.setText("");
         setupAllLettersButton();
-        setupEnterButton();
         turnOffTimer();
         startCountSession(); // this starts the next n thread, how does android manage memory?
     }
@@ -422,10 +441,12 @@ public class GameActivity extends Activity {
         i.putExtra(GameSetupActivity.KEY_CAT,mCat);
         i.putExtra(GameSetupActivity.KEY_MODE,mMode);
         i.putExtra(GameSetupActivity.KEY_LEN,mLen);
+        mTimeElapsed = 0;
         //Get score and streak as well
         // use intent only for temporary info
         startActivityForResult(i, 0);
     }
+
 
     // function to contain duplicate codes
     private void turnOffTimer() {

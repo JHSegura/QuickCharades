@@ -41,7 +41,6 @@
             android:id="@+id/game_skip_button"
             android:text="@string/skip_button"
             android:background="@drawable/rounded_btn"
-            android:textColor="#ff24ff22"
             android:layout_marginRight="21dp"
             android:layout_marginEnd="21dp"
             android:layout_alignTop="@+id/textView"
@@ -59,18 +58,18 @@
             android:layout_alignParentTop="true"
             android:layout_alignLeft="@+id/game_streak_number"
             android:layout_alignStart="@+id/game_streak_number"
-            android:layout_marginTop="24dp"/>
+            android:layout_marginTop="15dp"/>
 
         <TextView
             android:layout_width="49dp"
             android:layout_height="64dp"
             android:id="@+id/game_streak_number"
             android:text="@string/zero"
-            android:textSize="65sp"
+            android:textSize="50sp"
             android:textColor="#ffffffff"
-            android:layout_marginLeft="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="46dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="40dp"
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
@@ -119,15 +118,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_x="6dp"
-        android:layout_y="365dp">
+        android:layout_x="0dp"
+        android:layout_y="364dp"
+        android:paddingBottom="10dp">
 
         <Button
             android:id="@+id/game_clear_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/game_text_clear"
-            android:background="#ffff201b" />
+            android:background="#ffff201b"
+            android:layout_marginLeft="0dp" />
 
         <TextView
             android:id="@+id/game_answer_textview"
@@ -156,7 +157,8 @@
         android:layout_x="13dp"
         android:layout_y="430dp"
         android:rowCount="2"
-        android:columnCount="7">
+        android:columnCount="7"
+        android:paddingLeft="-10dp">
 
         <Button
             android:layout_width="50dp"
