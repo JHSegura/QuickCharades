@@ -35,9 +35,9 @@ public class GameSetupActivity extends ActionBarActivity {
     public static final int T_EASY = 20;
     public static final int T_NORM = 15;
     public static final int T_HARD = 10;
-    public static final int Q_SHORT = 10;
-    public static final int Q_MED = 20;
-    public static final int Q_LONG = 30;
+    public static final int Q_SHORT = 5;
+    public static final int Q_MED = 10;
+    public static final int Q_LONG = 15;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -77,7 +77,13 @@ public class GameActivity extends Activity {
             R.drawable.image_007,
             R.drawable.image_008,
             R.drawable.image_009,
-            R.drawable.image_010
+            R.drawable.image_010,
+            R.drawable.image_011,
+            R.drawable.image_012,
+            R.drawable.image_013,
+            R.drawable.image_014,
+            R.drawable.image_015
+
     };
 
     // TODO : find a way to store and retrive strings from database
@@ -91,7 +97,12 @@ public class GameActivity extends Activity {
             "DOVAHKIIN",
             "DEADPOOL",
             "THOR",
-            "MAGNETO"
+            "MAGNETO",
+            "CAPTAINAMERICA",
+            "DOCTORDOOM",
+            "FLASH",
+            "CYCLOPS",
+            "GREENARROW"
     };
 
 
@@ -128,7 +139,7 @@ public class GameActivity extends Activity {
 //        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
         mCurrentQuestion = 0;
         mTimeElapsed = 0;
-        mMaxQuestion = mImageIds.length;
+        mMaxQuestion = numQ;
         mImagePortrait = (ImageView) findViewById (R.id.game_imageView);
         mAnswerTextView = (TextView) findViewById(R.id.game_answer_textview);
         mScoreTextView = (TextView) findViewById(R.id.game_score_textview);
@@ -264,7 +275,7 @@ public class GameActivity extends Activity {
      */
     private void loadAllQuestions() { //Here
         mGameQuestions = new ArrayList<>();
-        for (int i = 0; i < mImageIds.length; i++) { //mImageIds.length() = numQ
+        for (int i = 0; i < numQ; i++) { //mImageIds.length() = numQ
             mGameQuestions.add(new Question(mImageIds[i], mImageNames[i]));
         }
     }
