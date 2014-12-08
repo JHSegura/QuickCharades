@@ -2,6 +2,7 @@ package com.awesomekids.android.quickcharades;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -38,6 +39,8 @@ public class GameActivity extends Activity {
     private TextView mAnswerTextView;
     private TextView mScoreTextView;
     private TextView mStreakView;
+    private TextView mPlayerName;
+    String name;
 
     private Button mEnterButton;
     private Button mClearButton;
@@ -110,7 +113,11 @@ public class GameActivity extends Activity {
         mAnswerTextView = (TextView) findViewById(R.id.game_answer_textview);
         mScoreTextView = (TextView) findViewById(R.id.game_score_textview);
         mStreakView = (TextView) findViewById(R.id.game_streak_number);
-        mEnterButton    = (Button) findViewById(R.id.game_button_enter);
+        mPlayerName = (TextView) findViewById(R.id.accountName);
+        mEnterButton = (Button) findViewById(R.id.game_button_enter);
+
+        setPlayerName();
+
         mEnterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,6 +160,14 @@ public class GameActivity extends Activity {
      * TODO : Implement Thread countDownThread @Override: onStop()
      * @Ovveride onStop() { super.onStop(); if (countDownThread != null) { countDownThread.interrupt(); } }
      */
+
+    public void setPlayerName ()
+    {
+        AccountDatabaseHandler db = new AccountDatabaseHandler(null);
+
+        mPlayerName.setText(name);
+    }
+
     public void startCountSession() {
         final Handler mProgressHandler;
         mProgressHandler = new Handler();

@@ -9,6 +9,7 @@ public class Account {
     private String _accountName;
 
     public Account () {this._id = 0; this._accountName = "None";}
+    public Account (int id) {this._id = id;}
     private Account (int id, String accountName){this._id = id; this._accountName = accountName;}
     public void setId(int id){this._id = id;}
     public int getId(){return this._id;}

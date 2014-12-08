@@ -1,5 +1,8 @@
 package com.awesomekids.android.quickcharades;
 
+import android.app.ActionBar;
+import android.content.Context;
+
 /**
  * Created by Joseph Park on 11/29/2014.
  */
@@ -22,6 +25,8 @@ public class Stat {
         this.WLRatio = WLRatio;
         this.wins = wins;
         this.losses = losses;
+
+        addStatsToDatabase();
     }
     public Stat(Stat Other){
         this.maxScore = Other.maxScore;
@@ -29,6 +34,8 @@ public class Stat {
         this.WLRatio = Other.WLRatio;
         this.wins = Other.wins;
         this.losses = Other.losses;
+
+        addStatsToDatabase();
     }
     public void setStats(Stat Other){
         this.maxScore = Other.maxScore;
@@ -36,5 +43,12 @@ public class Stat {
         this.WLRatio = Other.WLRatio;
         this.wins = Other.wins;
         this.losses = Other.losses;
+
+        addStatsToDatabase();
+    }
+
+    public void addStatsToDatabase()
+    {
+
     }
 }

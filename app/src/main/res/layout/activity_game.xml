@@ -6,8 +6,9 @@
                 >
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="80dp"
         android:layout_height="wrap_content">
+
         <Button
             android:id="@+id/close_button"
             style="?android:attr/buttonStyleSmall"
@@ -18,17 +19,8 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"/>
-        <Button
-            style="?android:attr/buttonStyleSmall"
-            android:id="@+id/game_option_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="onGameOptionButtonClick"
-            android:background="@android:drawable/ic_menu_preferences"
-            android:layout_alignParentTop="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
-        </RelativeLayout>
+
+    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -267,6 +259,29 @@
 
     </GridLayout>
 
+    <TextView
+        android:layout_width="83dp"
+        android:layout_height="29dp"
+        android:text="Player"
+        android:id="@+id/accountName"
+        android:layout_x="159dp"
+        android:layout_y="10dp"
+        android:textSize="20sp"
+        android:singleLine="true"
+        android:phoneNumber="false"/>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:id="@+id/game_option_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onGameOptionButtonClick"
+        android:background="@android:drawable/ic_menu_preferences"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_x="338dp"
+        android:layout_y="3dp"/>
 
 
 </AbsoluteLayout>

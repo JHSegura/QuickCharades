@@ -52,13 +52,17 @@
                 android:id="@+id/textView3"
                 android:layout_gravity="center_horizontal"/>
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Player1234"
                 android:id="@+id/username"
-                android:layout_weight="1"
-                android:inputType="text"
-                />
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="10dp"
+                android:editable="true"
+                android:singleLine="false"/>
+
         </TableRow>
 
         <TableRow
@@ -73,17 +77,21 @@
                 android:text="Highscore:"
                 android:id="@+id/textView4"/>
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="0"
                 android:id="@+id/highscore"
-                android:layout_weight="1"/>
+                android:paddingLeft="10dp"/>
+
         </TableRow>
 
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp">
+            android:layout_margin="10dp"
+            android:id="@+id/lowscor">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -92,11 +100,14 @@
                 android:text="Lowest Score:"
                 android:id="@+id/textView5"/>
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="0"
                 android:id="@+id/lowscore"
-                android:layout_weight="1"/>
+                android:paddingLeft="10dp"/>
+
         </TableRow>
 
         <TableRow
@@ -111,11 +122,14 @@
                 android:text="Best Streak:"
                 android:id="@+id/textView6"/>
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="0"
                 android:id="@+id/bestStreak"
-                android:layout_weight="1"/>
+                android:paddingLeft="10dp"/>
+
         </TableRow>
 
         <TableRow
@@ -130,11 +144,14 @@
                 android:text="Games Played:"
                 android:id="@+id/textView7"/>
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="None"
                 android:id="@+id/gamesPlayed"
-                android:layout_weight="1"/>
+                android:paddingLeft="10dp"/>
+
         </TableRow>
 
         <EditText
@@ -150,7 +167,7 @@
             android:text="Change Username"
             android:id="@+id/changeUsername"
             android:layout_gravity="center_horizontal"
-            />
+            android:onClick="buttonOnClick"/>
 
         <Button
             android:layout_width="wrap_content"
