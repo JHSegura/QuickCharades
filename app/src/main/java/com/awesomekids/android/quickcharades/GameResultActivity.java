@@ -41,6 +41,7 @@ public class GameResultActivity extends ActionBarActivity {
         // get info from player
         try {
             loadPlayerInfo();
+            updatePlayerInfo();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -92,5 +93,8 @@ public class GameResultActivity extends ActionBarActivity {
         score = GameActivity.mPlayer.currentScore;
         qAnswered = GameActivity.mPlayer.currentQanswered;
         streak = GameActivity.mPlayer.getStats().maxStreak;
+    }
+    public void updatePlayerInfo(){
+        //Push player info to database
     }
 }

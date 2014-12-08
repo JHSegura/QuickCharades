@@ -6,13 +6,13 @@
         android:minSdkVersion="11"
         android:targetSdkVersion="21" />
 
-    <android:uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" /> <!-- <android:uses-permission -->
+    <!--<android:uses-permission-->
+        <!--android:name="android.permission.WRITE_EXTERNAL_STORAGE"-->
+        <!--android:maxSdkVersion="18" />-->
+    <!--<android:uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <!--<android:uses-permission-->
+        <!--android:name="android.permission.READ_EXTERNAL_STORAGE"-->
+        <!--android:maxSdkVersion="18" /> &lt;!&ndash; <android:uses-permission &ndash;&gt;-->
     <!-- android:name="android.permission.WRITE_EXTERNAL_STORAGE" -->
     <!-- android:maxSdkVersion="18" /> -->
     <!-- <android:uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
@@ -51,35 +51,26 @@
             android:theme="@style/AppTheme" />
         <activity
             android:name=".FriendsActivity"
-            android:label="@string/title_activity_friends" >
-        </activity>
+            android:label="@string/title_activity_friends"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".LeaderboardActivity"
             android:label="@string/title_activity_leaderboard" >
         </activity>
         <activity
-            android:name=".CategoryActivity"
-            android:label="@string/title_activity_category" >
-        </activity>
-        <activity
-            android:name=".DifficultySelectActivity"
-            android:label="@string/title_activity_difficulty_select" >
-        </activity>
-        <activity
-            android:name=".GameModeActivity"
-            android:label="@string/title_activity_game_mode" >
-        </activity>
-        <activity
             android:name=".GameSetupActivity"
-            android:label="@string/title_activity_game_seteup" >
+            android:label="@string/title_activity_game_seteup"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
             android:name=".GameResultActivity"
-            android:label="@string/title_activity_game_result" >
+            android:label="@string/title_activity_game_result"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
         <activity
             android:name=".DatabaseActivity"
-            android:label="@string/title_activity_database" >
+            android:label="@string/title_activity_database"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         </activity>
     </application>
 

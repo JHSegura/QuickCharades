@@ -92,7 +92,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="140dp"
+                android:layout_height="160dp"
                 android:id="@+id/second_circle_space"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true" />
