@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
     }
 
     public void onFriendsButtonClick(View view) {
-        Intent getFriendsListIntent = new Intent(this,DatabaseActivity.class);
+        Intent getFriendsListIntent = new Intent(this,AccountActivity.class);
 //        final int result = 1; //what is this for
         startActivity(getFriendsListIntent);
 //        Toast.makeText(getBaseContext(), "Friends COMING SOON", Toast.LENGTH_SHORT).show();

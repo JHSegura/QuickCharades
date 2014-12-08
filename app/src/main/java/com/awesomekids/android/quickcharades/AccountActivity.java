@@ -46,7 +46,7 @@ public class AccountActivity extends ActionBarActivity {
 
     public void buttonOnClick (View v)
     {
-        TextView currentUsername = (TextView) findViewById(R.id.username);
+        currentUsername = (TextView) findViewById(R.id.username);
         name = newUsername.getText().toString();
         currentUsername.setText("Changed");
     }

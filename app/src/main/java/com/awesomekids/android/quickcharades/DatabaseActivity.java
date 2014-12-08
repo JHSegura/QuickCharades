@@ -11,7 +11,7 @@ public class DatabaseActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_database);
+//        setContentView(R.layout.activity_database);
     }
 
 
